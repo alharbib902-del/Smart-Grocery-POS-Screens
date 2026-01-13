@@ -1,0 +1,395 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Advanced Features</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50',
+                        secondary: '#2196F3',
+                        surface: '#FFFFFF',
+                        background: '#F3F4F6',
+                        error: '#EF4444',
+                        warning: '#FF9800',
+                        purpleAI: '#7C3AED', /* for AI features */
+                        textMain: '#1F2937',
+                        textSub: '#6B7280',
+                        border: '#E5E7EB'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        roboto: ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 4px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .hide-section { display: none; }
+        .active-nav { background-color: rgba(124, 58, 237, 0.1); color: #7C3AED; font-weight: bold; border-right: 3px solid #7C3AED; }
+        
+        /* Map Pattern for Geo-fence */
+        .map-bg {
+            background-color: #e5e7eb;
+            background-image: radial-gradient(#9ca3af 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+    <script src="navigation.js" defer></script>`r`n</head>
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex z-20 shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border bg-gray-50">
+            <div class="w-8 h-8 bg-purpleAI text-white rounded-lg flex items-center justify-center font-bold">AI</div>
+            <span class="font-bold text-lg text-gray-800">المتقدمة & ZATCA</span>
+        </div>
+        
+        <nav class="flex-1 p-4 space-y-1">
+            <button onclick="switchView('ai-tools')" id="nav-ai-tools" class="w-full flex items-center gap-3 px-4 py-3 text-textSub hover:bg-purple-50 hover:text-purpleAI rounded-xl transition-colors active-nav">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                <span>الذكاء الاصطناعي (AI)</span>
+            </button>
+            
+            <button onclick="switchView('drivers')" id="nav-drivers" class="w-full flex items-center gap-3 px-4 py-3 text-textSub hover:bg-purple-50 hover:text-purpleAI rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                <span>إدارة التوصيل</span>
+            </button>
+
+            <button onclick="switchView('reports')" id="nav-reports" class="w-full flex items-center gap-3 px-4 py-3 text-textSub hover:bg-purple-50 hover:text-purpleAI rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <span>تقارير الضريبة (VAT)</span>
+            </button>
+
+            <button onclick="switchView('settings')" id="nav-settings" class="w-full flex items-center gap-3 px-4 py-3 text-textSub hover:bg-purple-50 hover:text-purpleAI rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <span>الربح والولاء</span>
+            </button>
+
+             <div class="border-t border-border my-2 pt-2">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"/></svg>
+                    <span>عودة للرئيسية</span>
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden relative bg-gray-50">
+
+        <div id="view-ai-tools" class="flex-1 flex flex-col h-full overflow-y-auto custom-scroll">
+            <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0 sticky top-0 z-10">
+                <h1 class="text-xl font-bold text-textMain flex items-center gap-2">
+                    <span class="bg-purpleAI text-white px-2 py-0.5 rounded text-xs">BETA</span>
+                    <span>مركز الذكاء الاصطناعي</span>
+                </h1>
+            </header>
+
+            <div class="p-6 space-y-6">
+                
+                <div class="bg-surface rounded-2xl border border-purple-100 shadow-sm overflow-hidden">
+                    <div class="bg-gradient-to-r from-purple-50 to-white p-4 border-b border-purple-100 flex justify-between items-center">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-purpleAI text-white rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-textMain">الطلب الذكي (Smart Re-order)</h3>
+                                <p class="text-xs text-textSub">اقتراحات مبنية على معدل الاستهلاك الحالي وتوقعات الطلب</p>
+                            </div>
+                        </div>
+                        <button class="px-4 py-2 bg-purpleAI text-white rounded-lg hover:bg-purple-700 text-sm font-bold shadow-md">إنشاء طلب شراء آلي</button>
+                    </div>
+
+                    <div class="p-4">
+                        <table class="w-full text-right">
+                            <thead class="text-xs text-textSub uppercase font-bold bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-3 rounded-r-lg">المنتج</th>
+                                    <th class="px-4 py-3">المخزون الحالي</th>
+                                    <th class="px-4 py-3">المعدل اليومي</th>
+                                    <th class="px-4 py-3">الكمية المقترحة</th>
+                                    <th class="px-4 py-3 rounded-l-lg">الثقة (AI)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm divide-y divide-gray-100">
+                                <tr class="hover:bg-purple-50/30 transition-colors">
+                                    <td class="px-4 py-3 font-bold">حليب المراعي 2 لتر</td>
+                                    <td class="px-4 py-3 text-error font-bold">12</td>
+                                    <td class="px-4 py-3">45 وحدة/يوم</td>
+                                    <td class="px-4 py-3 font-bold text-purpleAI">+200</td>
+                                    <td class="px-4 py-3"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold">98% High</span></td>
+                                </tr>
+                                <tr class="hover:bg-purple-50/30 transition-colors">
+                                    <td class="px-4 py-3 font-bold">بيض وطني (طبق)</td>
+                                    <td class="px-4 py-3 text-warning font-bold">5</td>
+                                    <td class="px-4 py-3">10 أطباق/يوم</td>
+                                    <td class="px-4 py-3 font-bold text-purpleAI">+50</td>
+                                    <td class="px-4 py-3"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold">95% High</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-surface rounded-2xl border border-border p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-4">العروض الذكية (Geo-Targeting)</h3>
+                        <p class="text-sm text-textSub mb-4">إرسال عروض ترويجية للعملاء القريبين من المحل (نطاق 2 كم).</p>
+                        
+                        <div class="relative h-48 w-full rounded-xl overflow-hidden border border-gray-300 map-bg flex items-center justify-center group cursor-pointer">
+                            <div class="absolute w-32 h-32 bg-purpleAI/20 rounded-full animate-ping"></div>
+                            <div class="absolute w-32 h-32 bg-purpleAI/10 rounded-full border border-purpleAI/30 flex items-center justify-center">
+                                <div class="w-4 h-4 bg-purpleAI rounded-full border-2 border-white shadow"></div>
+                            </div>
+                            <div class="absolute bottom-2 right-2 bg-white px-2 py-1 rounded text-xs font-bold shadow">Google Maps Mockup</div>
+                            <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors"></div>
+                        </div>
+                        
+                        <button class="w-full mt-4 py-2 border border-purpleAI text-purpleAI rounded-lg font-bold hover:bg-purple-50 transition-colors">
+                            إنشاء حملة جغرافية
+                        </button>
+                    </div>
+
+                    <div class="bg-surface rounded-2xl border border-border p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-4">تحليل شرائح العملاء</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center">👑</div>
+                                    <div>
+                                        <p class="font-bold text-sm">كبار العملاء (VIP)</p>
+                                        <p class="text-xs text-textSub">متوسط السلة > 200 ريال</p>
+                                    </div>
+                                </div>
+                                <span class="font-bold">24 عميل</span>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">💤</div>
+                                    <div>
+                                        <p class="font-bold text-sm">العملاء الخاملين</p>
+                                        <p class="text-xs text-textSub">لم يشتروا منذ 30 يوم</p>
+                                    </div>
+                                </div>
+                                <span class="font-bold">156 عميل</span>
+                            </div>
+
+                             <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center">🆕</div>
+                                    <div>
+                                        <p class="font-bold text-sm">عملاء جدد</p>
+                                        <p class="text-xs text-textSub">أول شراء هذا الأسبوع</p>
+                                    </div>
+                                </div>
+                                <span class="font-bold">12 عميل</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="view-drivers" class="flex-1 flex flex-col h-full hide-section">
+            <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+                <h1 class="text-xl font-bold text-textMain">إدارة المناديب والتوصيل</h1>
+                <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-green-600 text-sm font-bold">+ إضافة مندوب</button>
+            </header>
+            
+            <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-auto custom-scroll">
+                <div class="bg-surface rounded-xl border border-border p-5 shadow-sm">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex gap-3">
+                            <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center font-bold text-gray-600">MA</div>
+                            <div>
+                                <h3 class="font-bold">محمد علي</h3>
+                                <div class="flex items-center text-yellow-400 text-sm">
+                                    ★★★★☆ <span class="text-xs text-gray-400 mr-1">(4.8)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="bg-green-100 text-green-700 text-[10px] px-2 py-1 rounded font-bold">متاح</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-center mb-4">
+                        <div class="bg-gray-50 p-2 rounded-lg">
+                            <p class="text-xs text-textSub">الطلبات اليوم</p>
+                            <p class="font-bold text-lg">12</p>
+                        </div>
+                         <div class="bg-gray-50 p-2 rounded-lg">
+                            <p class="text-xs text-textSub">متوسط الوقت</p>
+                            <p class="font-bold text-lg">25 د</p>
+                        </div>
+                    </div>
+                    <button class="w-full py-2 border border-border rounded-lg text-sm font-bold hover:bg-gray-50">التفاصيل والموقع</button>
+                </div>
+
+                 <div class="bg-surface rounded-xl border border-border p-5 shadow-sm">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex gap-3">
+                            <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center font-bold text-gray-600">SA</div>
+                            <div>
+                                <h3 class="font-bold">سعيد أحمد</h3>
+                                <div class="flex items-center text-yellow-400 text-sm">
+                                    ★★★★★ <span class="text-xs text-gray-400 mr-1">(5.0)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="bg-red-100 text-red-700 text-[10px] px-2 py-1 rounded font-bold">مشغول</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-center mb-4">
+                        <div class="bg-gray-50 p-2 rounded-lg">
+                            <p class="text-xs text-textSub">الطلبات اليوم</p>
+                            <p class="font-bold text-lg">8</p>
+                        </div>
+                         <div class="bg-gray-50 p-2 rounded-lg">
+                            <p class="text-xs text-textSub">متوسط الوقت</p>
+                            <p class="font-bold text-lg">20 د</p>
+                        </div>
+                    </div>
+                    <button class="w-full py-2 border border-border rounded-lg text-sm font-bold hover:bg-gray-50">التفاصيل والموقع</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-reports" class="flex-1 flex flex-col h-full hide-section">
+            <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+                <h1 class="text-xl font-bold text-textMain">التقرير الضريبي (ZATCA VAT)</h1>
+                <div class="flex gap-2">
+                    <button class="px-4 py-2 border border-border rounded-lg text-sm font-bold">الربع الأول 2026</button>
+                    <button class="px-4 py-2 bg-secondary text-white rounded-lg hover:bg-blue-600 text-sm font-bold">تصدير للإقرار</button>
+                </div>
+            </header>
+
+            <div class="p-6 max-w-4xl mx-auto w-full overflow-y-auto custom-scroll">
+                <div class="bg-surface border border-border rounded-xl shadow-sm overflow-hidden">
+                    <div class="bg-gray-50 px-6 py-4 border-b border-border flex justify-between items-center">
+                        <h3 class="font-bold text-lg">ملخص ضريبة القيمة المضافة (15%)</h3>
+                        <span class="text-xs text-gray-500">الفترة: 01-01-2026 إلى 31-03-2026</span>
+                    </div>
+                    <div class="p-6 space-y-6">
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-4">
+                            <div>
+                                <p class="font-bold text-textMain">ضريبة المبيعات (المخرجات)</p>
+                                <p class="text-xs text-textSub">إجمالي الضريبة المحصلة من العملاء</p>
+                            </div>
+                            <div class="text-left">
+                                <p class="font-roboto font-bold text-xl text-textMain">15,450.00 SAR</p>
+                                <p class="text-xs text-gray-400">على مبيعات 103,000 SAR</p>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-4">
+                            <div>
+                                <p class="font-bold text-textMain">ضريبة المشتريات (المدخلات)</p>
+                                <p class="text-xs text-textSub">الضريبة المدفوعة للموردين (قابلة للاسترداد)</p>
+                            </div>
+                            <div class="text-left">
+                                <p class="font-roboto font-bold text-xl text-error">- 4,200.00 SAR</p>
+                                <p class="text-xs text-gray-400">على مشتريات 28,000 SAR</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 p-4 rounded-xl flex justify-between items-center border border-green-100">
+                            <div>
+                                <p class="font-bold text-green-800 text-lg">صافي الضريبة المستحقة</p>
+                                <p class="text-xs text-green-600">المبلغ الواجب سداده للهيئة</p>
+                            </div>
+                            <p class="font-roboto font-bold text-3xl text-green-700">11,250.00 SAR</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-settings" class="flex-1 flex flex-col h-full hide-section overflow-y-auto custom-scroll">
+            <div class="p-6 max-w-3xl mx-auto space-y-6">
+                
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h2 class="font-bold text-lg mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-primary rounded-full"></span>
+                        الربط مع الهيئة (ZATCA)
+                    </h2>
+                    <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-lg border border-gray-100">
+                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-green-700">المرحلة الثانية (ربط وتكامل)</h3>
+                            <p class="text-xs text-gray-500">الجهاز متصل ويرسل الفواتير لحظياً</p>
+                        </div>
+                        <button class="text-xs text-primary font-bold underline">فحص الاتصال</button>
+                    </div>
+                    
+                    <div class="mt-4 space-y-2">
+                         <div class="flex justify-between text-sm">
+                            <span class="text-textSub">رقم الشهادة الرقمية (CSID)</span>
+                            <span class="font-roboto font-bold text-textMain">***-8A2B</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-textSub">آخر مزامنة</span>
+                            <span class="font-roboto font-bold text-textMain">Just now</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h2 class="font-bold text-lg mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-purpleAI rounded-full"></span>
+                        نظام نقاط الولاء
+                    </h2>
+                    
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="text-sm font-bold">تفعيل النظام</span>
+                        <div class="w-12 h-6 bg-purpleAI rounded-full relative cursor-pointer"><div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div></div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-textSub mb-2">كل 1 ريال مشتريات =</label>
+                            <div class="flex items-center border border-border rounded-lg bg-white px-3 h-10">
+                                <input type="number" value="1" class="w-full outline-none font-bold text-center">
+                                <span class="text-xs text-gray-400 shrink-0">نقطة</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-textSub mb-2">قيمة النقطة بالريال</label>
+                            <div class="flex items-center border border-border rounded-lg bg-white px-3 h-10">
+                                <input type="number" value="0.10" class="w-full outline-none font-bold text-center">
+                                <span class="text-xs text-gray-400 shrink-0">SAR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function switchView(viewId) {
+            ['ai-tools', 'drivers', 'reports', 'settings'].forEach(id => {
+                document.getElementById('view-' + id).classList.add('hide-section');
+                document.getElementById('nav-' + id).classList.remove('active-nav');
+            });
+            document.getElementById('view-' + viewId).classList.remove('hide-section');
+            document.getElementById('nav-' + viewId).classList.add('active-nav');
+        }
+    </script>
+</body>
+</html>

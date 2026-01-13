@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Expenses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-error text-white rounded-lg flex items-center justify-center font-bold">💸</div>
+            <span class="font-bold text-lg">المصروفات</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">🏠
+                الرئيسية</a>
+            <a href="dashboard.html"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">📊 لوحة التحكم</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-error/10 text-error rounded-xl font-bold">💸
+                المصروفات</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <h1 class="text-xl font-bold">سجل المصروفات</h1>
+            <div class="flex gap-3">
+                <input type="month" value="2026-01" class="h-10 px-4 rounded-lg border border-border font-roboto">
+                <button
+                    class="px-4 py-2 bg-error text-white rounded-lg font-bold hover:bg-red-600 flex items-center gap-2">
+                    ➕ إضافة مصروف
+                </button>
+            </div>
+        </header>
+
+        <!-- Summary -->
+        <div class="px-6 py-4 grid grid-cols-4 gap-4 shrink-0">
+            <div class="bg-red-50 p-4 rounded-xl border border-red-200 shadow-sm">
+                <p class="text-xs text-error font-bold">إجمالي الشهر</p>
+                <p class="text-2xl font-bold font-roboto text-error">4,250 SAR</p>
+            </div>
+            <div class="bg-surface p-4 rounded-xl border border-border shadow-sm">
+                <p class="text-xs text-textSub font-bold">رواتب</p>
+                <p class="text-2xl font-bold font-roboto">2,500 SAR</p>
+            </div>
+            <div class="bg-surface p-4 rounded-xl border border-border shadow-sm">
+                <p class="text-xs text-textSub font-bold">إيجار وفواتير</p>
+                <p class="text-2xl font-bold font-roboto">1,200 SAR</p>
+            </div>
+            <div class="bg-surface p-4 rounded-xl border border-border shadow-sm">
+                <p class="text-xs text-textSub font-bold">أخرى</p>
+                <p class="text-2xl font-bold font-roboto">550 SAR</p>
+            </div>
+        </div>
+
+        <div class="flex-1 px-6 pb-6 overflow-y-auto">
+            <div class="bg-surface rounded-xl border border-border overflow-hidden shadow-sm">
+                <table class="w-full text-right">
+                    <thead class="bg-gray-50 border-b text-xs text-textSub uppercase font-bold">
+                        <tr>
+                            <th class="px-6 py-4">التاريخ</th>
+                            <th class="px-6 py-4">الفئة</th>
+                            <th class="px-6 py-4">الوصف</th>
+                            <th class="px-6 py-4">المبلغ</th>
+                            <th class="px-6 py-4">إجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-border text-sm">
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 font-roboto">2026-01-13</td>
+                            <td class="px-6 py-4"><span
+                                    class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">رواتب</span></td>
+                            <td class="px-6 py-4">راتب موظف - محمد علي</td>
+                            <td class="px-6 py-4 font-roboto font-bold text-error">-2,500 SAR</td>
+                            <td class="px-6 py-4"><button class="text-textSub hover:text-error">🗑️</button></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 font-roboto">2026-01-10</td>
+                            <td class="px-6 py-4"><span
+                                    class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs">فواتير</span></td>
+                            <td class="px-6 py-4">فاتورة الكهرباء</td>
+                            <td class="px-6 py-4 font-roboto font-bold text-error">-450 SAR</td>
+                            <td class="px-6 py-4"><button class="text-textSub hover:text-error">🗑️</button></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 font-roboto">2026-01-05</td>
+                            <td class="px-6 py-4"><span
+                                    class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">أخرى</span></td>
+                            <td class="px-6 py-4">صيانة ثلاجة</td>
+                            <td class="px-6 py-4 font-roboto font-bold text-error">-350 SAR</td>
+                            <td class="px-6 py-4"><button class="text-textSub hover:text-error">🗑️</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

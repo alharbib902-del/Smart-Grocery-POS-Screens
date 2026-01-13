@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Close Month</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>`r`n</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-warning text-white rounded-lg flex items-center justify-center font-bold">📅</div>
+            <span class="font-bold text-lg">إقفال الشهر</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span>عودة للرئيسية</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-warning/10 text-warning rounded-xl font-bold">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span>إقفال الشهر</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <div>
+                <h1 class="text-xl font-bold">إقفال شهر ديسمبر 2025</h1>
+                <p class="text-xs text-textSub">مراجعة واحتساب الفوائد الشهرية</p>
+            </div>
+            <div class="bg-orange-50 px-4 py-2 rounded-lg border border-orange-200 text-sm font-bold text-orange-700">
+                آخر إقفال: 30 نوفمبر 2025
+            </div>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-6">
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="bg-surface p-5 rounded-xl border border-border text-center">
+                        <p class="text-xs text-textSub font-bold mb-2">عدد العملاء</p>
+                        <p class="text-3xl font-bold font-roboto">24</p>
+                    </div>
+                    <div class="bg-surface p-5 rounded-xl border border-border text-center">
+                        <p class="text-xs text-textSub font-bold mb-2">إجمالي الديون</p>
+                        <p class="text-3xl font-bold font-roboto text-error">8,450 SAR</p>
+                    </div>
+                    <div class="bg-purple-50 p-5 rounded-xl border border-purple-200 text-center">
+                        <p class="text-xs text-purple-600 font-bold mb-2">الفوائد المتوقعة</p>
+                        <p class="text-3xl font-bold font-roboto text-purple-700">422.50 SAR</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-xl border border-border overflow-hidden">
+                    <div class="bg-gray-50 px-6 py-4 border-b border-border">
+                        <h3 class="font-bold text-lg">معاينة الفوائد</h3>
+                    </div>
+                    <table class="w-full text-right text-sm">
+                        <thead class="bg-gray-50 border-b text-xs text-textSub uppercase font-bold">
+                            <tr>
+                                <th class="px-6 py-3">العميل</th>
+                                <th class="px-6 py-3">الرصيد</th>
+                                <th class="px-6 py-3">أيام التأخير</th>
+                                <th class="px-6 py-3">الفائدة</th>
+                                <th class="px-6 py-3">الرصيد الجديد</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-border">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-3 font-bold">أحمد حسن</td>
+                                <td class="px-6 py-3 font-roboto">450.00</td>
+                                <td class="px-6 py-3 font-roboto text-error">45 يوم</td>
+                                <td class="px-6 py-3 font-roboto text-purple-600 font-bold">+22.50</td>
+                                <td class="px-6 py-3 font-roboto font-bold">472.50</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-3 font-bold">محمد كمال</td>
+                                <td class="px-6 py-3 font-roboto">120.50</td>
+                                <td class="px-6 py-3 font-roboto text-warning">18 يوم</td>
+                                <td class="px-6 py-3 font-roboto text-purple-600 font-bold">+6.03</td>
+                                <td class="px-6 py-3 font-roboto font-bold">126.53</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-3 font-bold">سارة أحمد</td>
+                                <td class="px-6 py-3 font-roboto">2,500.00</td>
+                                <td class="px-6 py-3 font-roboto text-error">60 يوم</td>
+                                <td class="px-6 py-3 font-roboto text-purple-600 font-bold">+125.00</td>
+                                <td class="px-6 py-3 font-roboto font-bold">2,625.00</td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="bg-purple-50 border-t-2 border-purple-200 font-bold">
+                            <tr>
+                                <td class="px-6 py-4" colspan="3">الإجمالي</td>
+                                <td class="px-6 py-4 font-roboto text-purple-700">422.50</td>
+                                <td class="px-6 py-4 font-roboto">8,872.50</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+                    <h3 class="font-bold text-red-800">⚠️ عملية لا يمكن التراجع عنها</h3>
+                    <p class="text-sm text-red-700">بمجرد التأكيد، سيتم إضافة الفوائد لأرصدة العملاء.</p>
+                </div>
+
+                <div class="flex justify-between items-center bg-surface p-6 rounded-xl border border-border">
+                    <div class="flex items-center gap-3">
+                        <input type="checkbox" id="confirm" class="w-5 h-5 text-primary rounded">
+                        <label for="confirm" class="text-sm font-bold">أقر بموافقتي على احتساب الفوائد</label>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="px-6 h-12 border border-border rounded-xl font-bold hover:bg-gray-50">طباعة
+                            التقرير</button>
+                        <button id="btn" disabled
+                            class="px-6 h-12 bg-warning text-white rounded-xl font-bold disabled:opacity-50">
+                            تأكيد إقفال الشهر
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.getElementById('confirm').addEventListener('change', function () {
+            document.getElementById('btn').disabled = !this.checked;
+        });
+    </script>
+</body>
+
+</html>

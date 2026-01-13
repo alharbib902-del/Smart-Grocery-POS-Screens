@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Inventory List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>`r`n</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-warning text-white rounded-lg flex items-center justify-center font-bold">📦</div>
+            <span class="font-bold text-lg">المخزون</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span>عودة للرئيسية</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-warning/10 text-warning rounded-xl font-bold">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+                <span>حركة المخزون</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <h1 class="text-xl font-bold">إدارة المخزون</h1>
+            <div class="flex gap-3">
+                <input type="text" placeholder="بحث بالمنتج أو الباركود..."
+                    class="h-10 w-64 px-4 rounded-lg border border-border focus:border-primary outline-none text-sm">
+                <button
+                    class="px-4 py-2 bg-primary text-white rounded-lg font-bold hover:bg-green-600 flex items-center gap-2">
+                    + تعديل المخزون
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats -->
+        <div class="px-6 py-4 grid grid-cols-4 gap-4 shrink-0">
+            <div class="bg-surface p-4 rounded-xl border border-border shadow-sm">
+                <p class="text-xs text-textSub font-bold">إجمالي الأصناف</p>
+                <p class="text-2xl font-bold font-roboto">1,245</p>
+            </div>
+            <div class="bg-red-50 p-4 rounded-xl border border-red-200 shadow-sm">
+                <p class="text-xs text-error font-bold">مخزون منخفض</p>
+                <p class="text-2xl font-bold font-roboto text-error">23</p>
+            </div>
+            <div class="bg-orange-50 p-4 rounded-xl border border-orange-200 shadow-sm">
+                <p class="text-xs text-warning font-bold">قرب انتهاء الصلاحية</p>
+                <p class="text-2xl font-bold font-roboto text-warning">8</p>
+            </div>
+            <div class="bg-surface p-4 rounded-xl border border-border shadow-sm">
+                <p class="text-xs text-textSub font-bold">قيمة المخزون</p>
+                <p class="text-2xl font-bold font-roboto">125,450 SAR</p>
+            </div>
+        </div>
+
+        <!-- List -->
+        <div class="flex-1 px-6 pb-6 overflow-y-auto">
+            <div class="bg-surface rounded-xl border border-border overflow-hidden shadow-sm">
+                <table class="w-full text-right">
+                    <thead class="bg-gray-50 border-b text-xs text-textSub uppercase font-bold">
+                        <tr>
+                            <th class="px-6 py-4">المنتج</th>
+                            <th class="px-6 py-4">الباركود</th>
+                            <th class="px-6 py-4">الكمية</th>
+                            <th class="px-6 py-4">الحد الأدنى</th>
+                            <th class="px-6 py-4">الحالة</th>
+                            <th class="px-6 py-4">إجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-border text-sm">
+                        <tr class="hover:bg-gray-50 bg-red-50/50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">🥛</span>
+                                    <span class="font-bold">حليب المراعي 2 لتر</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 font-roboto text-textSub">6281007001234</td>
+                            <td class="px-6 py-4 font-roboto font-bold text-error">5</td>
+                            <td class="px-6 py-4 font-roboto">20</td>
+                            <td class="px-6 py-4">
+                                <span class="bg-red-100 text-error px-2 py-1 rounded text-xs font-bold">⚠️ منخفض</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <button
+                                    class="px-3 py-1 bg-primary/10 text-primary rounded text-xs font-bold">تعديل</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">🧈</span>
+                                    <span class="font-bold">زبدة المراعي 400غ</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 font-roboto text-textSub">6281007002345</td>
+                            <td class="px-6 py-4 font-roboto font-bold">45</td>
+                            <td class="px-6 py-4 font-roboto">15</td>
+                            <td class="px-6 py-4">
+                                <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">✓
+                                    متوفر</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <button
+                                    class="px-3 py-1 bg-primary/10 text-primary rounded text-xs font-bold">تعديل</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 bg-orange-50/50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">🥤</span>
+                                    <span class="font-bold">عصير المراعي 1 لتر</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 font-roboto text-textSub">6281007003456</td>
+                            <td class="px-6 py-4 font-roboto font-bold">30</td>
+                            <td class="px-6 py-4 font-roboto">10</td>
+                            <td class="px-6 py-4">
+                                <span class="bg-orange-100 text-warning px-2 py-1 rounded text-xs font-bold">⏰ قرب
+                                    الانتهاء</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <button
+                                    class="px-3 py-1 bg-primary/10 text-primary rounded text-xs font-bold">تعديل</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Printer Settings</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50',
+                        primaryHover: '#43A047',
+                        secondary: '#2196F3',
+                        surface: '#FFFFFF',
+                        background: '#F3F4F6',
+                        error: '#EF4444',
+                        textMain: '#1F2937',
+                        textSub: '#6B7280',
+                        border: '#E5E7EB'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        roboto: ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>`r`n</head>
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex z-20 shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center font-bold">SG</div>
+            <span class="font-bold text-lg text-gray-800">البقالة الذكية</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 hover:text-primary rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                <span>عودة للقائمة الرئيسية</span>
+            </a>
+            <div class="pt-4 pb-2 px-4 text-xs font-bold text-textSub uppercase">الإعدادات</div>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 hover:text-primary rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                <span>بيانات المتجر</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-xl transition-colors font-bold">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                <span>الطابعات والفواتير</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+        
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0 z-10">
+            <h1 class="text-xl font-bold text-textMain">إعدادات الطابعة والفواتير</h1>
+            <button class="px-6 h-10 rounded-lg bg-primary text-white font-bold hover:bg-primaryHover shadow-sm flex items-center gap-2 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>حفظ التغييرات</span>
+            </button>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-4 md:p-8 custom-scroll">
+            <div class="max-w-4xl mx-auto space-y-6">
+
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center text-primary border border-green-100">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-textMain">Epson TM-T88V</h3>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="w-2.5 h-2.5 bg-primary rounded-full animate-pulse"></span>
+                                <span class="text-sm font-bold text-primary">متصل وجاهز (USB)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="px-4 h-10 border border-border rounded-lg text-textMain hover:bg-gray-50 text-sm font-bold">إعادة الاتصال</button>
+                        <button class="px-4 h-10 bg-secondary/10 text-secondary border border-secondary/20 rounded-lg hover:bg-secondary/20 text-sm font-bold flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                            طباعة تجريبية
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h2 class="font-bold text-lg mb-4 text-textMain border-b border-gray-100 pb-2">إعدادات الورق</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">مقاس الورق</label>
+                            <div class="flex gap-4">
+                                <label class="flex-1 cursor-pointer">
+                                    <input type="radio" name="paper_size" checked class="peer sr-only">
+                                    <div class="h-12 rounded-lg border border-border peer-checked:border-primary peer-checked:bg-green-50 peer-checked:text-primary flex items-center justify-center font-bold text-textSub transition-all">
+                                        80mm (قياسي)
+                                    </div>
+                                </label>
+                                <label class="flex-1 cursor-pointer">
+                                    <input type="radio" name="paper_size" class="peer sr-only">
+                                    <div class="h-12 rounded-lg border border-border peer-checked:border-primary peer-checked:bg-green-50 peer-checked:text-primary flex items-center justify-center font-bold text-textSub transition-all">
+                                        58mm (صغير)
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">عدد النسخ التلقائي</label>
+                            <div class="flex items-center border border-border rounded-lg w-32 h-12">
+                                <button class="w-10 h-full flex items-center justify-center text-lg hover:bg-gray-50 text-textSub">-</button>
+                                <input type="text" value="1" class="w-12 h-full text-center font-bold font-roboto outline-none border-x border-border" readonly>
+                                <button class="w-10 h-full flex items-center justify-center text-lg hover:bg-gray-50 text-textSub">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h2 class="font-bold text-lg mb-4 text-textMain border-b border-gray-100 pb-2">تخصيص الفاتورة</h2>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="font-bold text-textMain block">إظهار شعار المتجر</span>
+                                <span class="text-xs text-textSub">طباعة الشعار في أعلى الفاتورة</span>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                            </label>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="font-bold text-textMain block">إظهار معلومات العميل</span>
+                                <span class="text-xs text-textSub">اسم العميل ورقم الهاتف إذا توفر</span>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                            </label>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="font-bold text-textMain block">رسالة تذييل الفاتورة (Footer)</span>
+                                <span class="text-xs text-textSub">مثل: شكراً لزيارتكم، سياسة الاستبدال...</span>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                            </label>
+                        </div>
+
+                        <div class="mt-2">
+                            <textarea class="w-full h-24 p-3 rounded-lg border border-border bg-gray-50 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none text-sm transition-all" placeholder="اكتب الرسالة التي ستظهر أسفل الفاتورة هنا...">شكراً لزيارتكم لمتجر البقالة الذكية.
+نرجو الاحتفاظ بالفاتورة للاستبدال والاسترجاع خلال 3 أيام.</textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</body>
+</html>

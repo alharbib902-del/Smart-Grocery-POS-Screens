@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Returns</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-error text-white rounded-lg flex items-center justify-center font-bold">↩️</div>
+            <span class="font-bold text-lg">المرتجعات</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">🏠
+                الرئيسية</a>
+            <a href="pos.html" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">🛒
+                نقطة البيع</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-error/10 text-error rounded-xl font-bold">↩️
+                المرتجعات</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <h1 class="text-xl font-bold">إرجاع منتجات</h1>
+        </header>
+
+        <div class="flex-1 flex gap-6 p-6 overflow-hidden">
+            <!-- Search & Invoice -->
+            <div class="w-1/2 flex flex-col gap-4">
+                <div class="bg-surface rounded-xl border border-border p-4 shadow-sm">
+                    <h3 class="font-bold mb-3">البحث عن الفاتورة</h3>
+                    <div class="flex gap-2">
+                        <input type="text" placeholder="رقم الفاتورة أو رقم جوال العميل..."
+                            class="flex-1 h-12 px-4 rounded-lg border border-border">
+                        <button class="px-6 h-12 bg-secondary text-white rounded-lg font-bold">بحث</button>
+                    </div>
+                </div>
+
+                <!-- Found Invoice -->
+                <div
+                    class="bg-surface rounded-xl border border-border p-4 shadow-sm flex-1 overflow-hidden flex flex-col">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-bold">الفاتورة #1023</h3>
+                        <span class="text-sm text-textSub font-roboto">2026-01-13 10:45</span>
+                    </div>
+                    <div class="flex-1 overflow-y-auto space-y-2">
+                        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="w-5 h-5 rounded text-error">
+                            <span class="text-xl">🥛</span>
+                            <div class="flex-1">
+                                <p class="font-bold text-sm">حليب المراعي 2 لتر</p>
+                                <p class="text-xs text-textSub">الكمية: 2 | السعر: 9.50 SAR</p>
+                            </div>
+                            <input type="number" value="1" min="1" max="2"
+                                class="w-16 h-10 text-center rounded-lg border border-border font-roboto">
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="w-5 h-5 rounded text-error">
+                            <span class="text-xl">🧀</span>
+                            <div class="flex-1">
+                                <p class="font-bold text-sm">جبنة كرافت</p>
+                                <p class="text-xs text-textSub">الكمية: 1 | السعر: 18.50 SAR</p>
+                            </div>
+                            <input type="number" value="1" min="1" max="1"
+                                class="w-16 h-10 text-center rounded-lg border border-border font-roboto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Return Details -->
+            <div class="w-1/2 flex flex-col gap-4">
+                <div class="bg-surface rounded-xl border border-border p-4 shadow-sm flex-1">
+                    <h3 class="font-bold mb-3">تفاصيل الإرجاع</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">سبب الإرجاع</label>
+                            <select class="w-full h-12 px-4 rounded-lg border border-border">
+                                <option>المنتج تالف</option>
+                                <option>خطأ في الطلب</option>
+                                <option>انتهاء الصلاحية</option>
+                                <option>عدم رضا العميل</option>
+                                <option>أخرى</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">ملاحظات</label>
+                            <textarea rows="3" placeholder="أي ملاحظات إضافية..."
+                                class="w-full px-4 py-3 rounded-lg border border-border resize-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">طريقة الاسترداد</label>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button
+                                    class="p-3 border-2 border-primary bg-green-50 text-primary rounded-lg font-bold">💵
+                                    نقداً</button>
+                                <button class="p-3 border border-border rounded-lg font-bold hover:bg-gray-50">💳
+                                    للبطاقة</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-error/10 border border-error/20 rounded-xl p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-bold">إجمالي المبلغ المسترد</span>
+                        <span class="text-2xl font-bold font-roboto text-error">9.50 SAR</span>
+                    </div>
+                    <button class="w-full h-14 bg-error text-white rounded-xl font-bold text-lg hover:bg-red-600">
+                        ↩️ تنفيذ الإرجاع
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

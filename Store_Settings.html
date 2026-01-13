@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Store Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-secondary text-white rounded-lg flex items-center justify-center font-bold">🏪</div>
+            <span class="font-bold text-lg">بيانات المتجر</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">🏠
+                الرئيسية</a>
+            <a href="General_Settings.html"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">⚙️ الإعدادات
+                العامة</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-secondary/10 text-secondary rounded-xl font-bold">🏪
+                بيانات المتجر</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <h1 class="text-xl font-bold">بيانات المتجر</h1>
+            <button class="px-6 h-10 bg-primary text-white rounded-lg font-bold hover:bg-green-600">حفظ
+                البيانات</button>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-6">
+            <div class="max-w-3xl mx-auto space-y-6">
+                <!-- Store Logo & Name -->
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h2 class="font-bold text-lg mb-4">الهوية التجارية</h2>
+                    <div class="flex gap-6">
+                        <div class="text-center">
+                            <div
+                                class="w-24 h-24 bg-gray-100 rounded-xl flex items-center justify-center text-4xl mb-2">
+                                🛒</div>
+                            <button class="text-secondary text-sm font-bold">تغيير الشعار</button>
+                        </div>
+                        <div class="flex-1 space-y-4">
+                            <div>
+                                <label class="block text-sm font-bold text-textSub mb-2">اسم المتجر (عربي)</label>
+                                <input type="text" value="بقالة الحي الذكية"
+                                    class="w-full h-12 px-4 rounded-lg border border-border">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-textSub mb-2">اسم المتجر (إنجليزي)</label>
+                                <input type="text" value="Smart Grocery" dir="ltr"
+                                    class="w-full h-12 px-4 rounded-lg border border-border text-left">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h2 class="font-bold text-lg mb-4">معلومات التواصل</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">رقم الجوال</label>
+                            <input type="tel" value="0551234567" dir="ltr"
+                                class="w-full h-12 px-4 rounded-lg border border-border font-roboto text-left">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">الهاتف الثابت</label>
+                            <input type="tel" value="0112345678" dir="ltr"
+                                class="w-full h-12 px-4 rounded-lg border border-border font-roboto text-left">
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block text-sm font-bold text-textSub mb-2">البريد الإلكتروني</label>
+                            <input type="email" value="info@smartgrocery.sa" dir="ltr"
+                                class="w-full h-12 px-4 rounded-lg border border-border font-roboto text-left">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h2 class="font-bold text-lg mb-4">العنوان</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">المدينة</label>
+                            <select class="w-full h-12 px-4 rounded-lg border border-border">
+                                <option selected>الرياض</option>
+                                <option>جدة</option>
+                                <option>الدمام</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">الحي</label>
+                            <input type="text" value="حي النسيم"
+                                class="w-full h-12 px-4 rounded-lg border border-border">
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block text-sm font-bold text-textSub mb-2">العنوان التفصيلي</label>
+                            <input type="text" value="شارع الأمير سلطان، بجوار مسجد الرحمة"
+                                class="w-full h-12 px-4 rounded-lg border border-border">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legal Info -->
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h2 class="font-bold text-lg mb-4">البيانات القانونية</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">السجل التجاري</label>
+                            <input type="text" value="1010123456" dir="ltr"
+                                class="w-full h-12 px-4 rounded-lg border border-border font-roboto text-left">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">الرقم الضريبي</label>
+                            <input type="text" value="300000000000003" dir="ltr"
+                                class="w-full h-12 px-4 rounded-lg border border-border font-roboto text-left">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

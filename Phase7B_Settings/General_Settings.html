@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - General Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center font-bold">⚙️</div>
+            <span class="font-bold text-lg">الإعدادات</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">🏠
+                الرئيسية</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-xl font-bold">⚙️
+                الإعدادات العامة</a>
+            <a href="Store_Settings.html"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">🏪 بيانات المتجر</a>
+            <a href="Printer_Settings.html"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">🖨️ الطابعة</a>
+            <a href="Payment_Devices.html"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">💳 أجهزة الدفع</a>
+            <a href="User_Management.html"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">👥 المستخدمين</a>
+            <a href="Backup_Settings.html"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">💾 النسخ
+                الاحتياطي</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <h1 class="text-xl font-bold">الإعدادات العامة</h1>
+            <button class="px-6 h-10 bg-primary text-white rounded-lg font-bold hover:bg-green-600">حفظ
+                الإعدادات</button>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-6">
+            <div class="max-w-3xl mx-auto space-y-6">
+                <!-- Language & Region -->
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h2 class="font-bold text-lg mb-4">اللغة والمنطقة</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">لغة النظام</label>
+                            <select class="w-full h-12 px-4 rounded-lg border border-border">
+                                <option selected>العربية</option>
+                                <option>English</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">المنطقة الزمنية</label>
+                            <select class="w-full h-12 px-4 rounded-lg border border-border">
+                                <option selected>Asia/Riyadh (GMT+3)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">تنسيق التاريخ</label>
+                            <select class="w-full h-12 px-4 rounded-lg border border-border">
+                                <option selected>DD/MM/YYYY</option>
+                                <option>YYYY-MM-DD</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">العملة</label>
+                            <select class="w-full h-12 px-4 rounded-lg border border-border">
+                                <option selected>SAR - ريال سعودي</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tax Settings -->
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h2 class="font-bold text-lg mb-4">إعدادات الضريبة</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div>
+                                <p class="font-bold">تفعيل ضريبة القيمة المضافة (VAT)</p>
+                                <p class="text-xs text-textSub">احتساب الضريبة على الفواتير</p>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div
+                                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-primary peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold text-textSub mb-2">نسبة الضريبة %</label>
+                                <input type="number" value="15"
+                                    class="w-full h-12 px-4 rounded-lg border border-border font-roboto">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-textSub mb-2">الرقم الضريبي</label>
+                                <input type="text" value="300000000000003"
+                                    class="w-full h-12 px-4 rounded-lg border border-border font-roboto" dir="ltr">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification Settings -->
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h2 class="font-bold text-lg mb-4">الإشعارات</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <span>إشعار المخزون المنخفض</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div
+                                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-primary peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <span>إشعار الطلبات الجديدة</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div
+                                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-primary peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <span>الأصوات</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div
+                                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-primary peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

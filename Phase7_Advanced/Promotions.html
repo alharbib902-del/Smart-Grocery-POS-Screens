@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Promotions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800', purpleAI: '#7C3AED',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>`r`n</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-warning text-white rounded-lg flex items-center justify-center font-bold">🏷️</div>
+            <span class="font-bold text-lg">العروض</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">عودة
+                للرئيسية</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-warning/10 text-warning rounded-xl font-bold">العروض
+                الترويجية</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="bg-purple-100 text-purpleAI px-3 py-1 rounded-full text-xs font-bold">AI Geo-Targeting</div>
+                <h1 class="text-xl font-bold">العروض الذكية</h1>
+            </div>
+            <button
+                class="px-4 py-2 bg-warning text-white rounded-lg font-bold hover:bg-orange-600 flex items-center gap-2">
+                + إنشاء عرض جديد
+            </button>
+        </header>
+
+        <!-- AI Suggestion -->
+        <div class="px-6 py-4 shrink-0">
+            <div
+                class="bg-gradient-to-l from-purple-100 to-orange-100 border border-purple-200 rounded-xl p-4 flex items-start gap-4">
+                <div class="w-12 h-12 bg-purpleAI text-white rounded-full flex items-center justify-center text-xl">💡
+                </div>
+                <div class="flex-1">
+                    <h3 class="font-bold text-purpleAI">اقتراح ذكي من AI</h3>
+                    <p class="text-sm text-purple-700">بناءً على موقعك وتحليل المنافسين، يُوصي النظام بعرض على
+                        <strong>المياه والمشروبات</strong> هذا الأسبوع لجذب عملاء جدد من الحي المجاور.</p>
+                </div>
+                <button class="px-4 py-2 bg-purpleAI text-white rounded-lg text-sm font-bold">تطبيق</button>
+            </div>
+        </div>
+
+        <div class="flex-1 overflow-y-auto px-6 pb-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Active Promotion -->
+                <div class="bg-surface rounded-xl border border-green-200 shadow-sm overflow-hidden">
+                    <div class="bg-green-50 px-4 py-2 border-b border-green-100 flex justify-between items-center">
+                        <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">✓ نشط</span>
+                        <span class="text-xs text-textSub font-roboto">متبقي 3 أيام</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">🥛 عرض الألبان الأسبوعي</h3>
+                        <p class="text-sm text-textSub mb-3">خصم 15% على جميع منتجات الألبان</p>
+                        <div class="grid grid-cols-2 gap-2 text-center text-sm">
+                            <div class="bg-gray-50 p-2 rounded-lg">
+                                <p class="font-roboto font-bold text-lg">245</p>
+                                <p class="text-xs text-textSub">عملية شراء</p>
+                            </div>
+                            <div class="bg-gray-50 p-2 rounded-lg">
+                                <p class="font-roboto font-bold text-lg text-primary">3,450 SAR</p>
+                                <p class="text-xs text-textSub">مبيعات إضافية</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-2 border-t border-gray-100 flex gap-2">
+                        <button class="flex-1 py-2 text-secondary font-bold text-sm">تعديل</button>
+                        <button class="flex-1 py-2 text-error font-bold text-sm">إيقاف</button>
+                    </div>
+                </div>
+
+                <!-- Scheduled Promotion -->
+                <div class="bg-surface rounded-xl border border-blue-200 shadow-sm overflow-hidden">
+                    <div class="bg-blue-50 px-4 py-2 border-b border-blue-100 flex justify-between items-center">
+                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-bold">⏰ مجدول</span>
+                        <span class="text-xs text-textSub font-roboto">يبدأ غداً</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">🍞 عرض المخبوزات</h3>
+                        <p class="text-sm text-textSub mb-3">اشتري 2 واحصل على الثالث مجاناً</p>
+                        <div class="bg-gray-50 p-3 rounded-lg text-sm">
+                            <p class="text-textSub">الفترة: 14-20 يناير 2026</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-2 border-t border-gray-100 flex gap-2">
+                        <button class="flex-1 py-2 text-secondary font-bold text-sm">تعديل</button>
+                        <button class="flex-1 py-2 text-error font-bold text-sm">حذف</button>
+                    </div>
+                </div>
+
+                <!-- Expired -->
+                <div class="bg-surface rounded-xl border border-gray-200 shadow-sm overflow-hidden opacity-60">
+                    <div class="bg-gray-50 px-4 py-2 border-b border-gray-100 flex justify-between items-center">
+                        <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded text-xs font-bold">منتهي</span>
+                        <span class="text-xs text-textSub font-roboto">الأسبوع الماضي</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">🧀 عرض الأجبان</h3>
+                        <p class="text-sm text-textSub">خصم 10% على الأجبان المستوردة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

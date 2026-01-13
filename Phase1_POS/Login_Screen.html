@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery POS - Login</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50',
+                        surface: '#FFFFFF',
+                        background: '#F3F4F6',
+                        textMain: '#1F2937',
+                        textSub: '#6B7280',
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        roboto: ['Roboto', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-out': 'fadeOut 0.5s ease-in-out forwards',
+                        'fade-in': 'fadeIn 0.5s ease-in-out forwards',
+                        'bounce-slow': 'bounce 2s infinite',
+                    },
+                    keyframes: {
+                        fadeOut: { '0%': { opacity: '1' }, '100%': { opacity: '0', visibility: 'hidden' } },
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>`r`n</head>
+<body class="bg-background font-cairo h-screen w-screen overflow-hidden relative">
+
+    <div id="splash-screen" class="absolute inset-0 z-50 bg-gradient-to-br from-green-500 to-green-700 flex flex-col items-center justify-center text-white">
+        
+        <div class="relative mb-6">
+            <div class="w-32 h-32 bg-white rounded-3xl shadow-2xl flex items-center justify-center animate-bounce-slow">
+                <span class="text-6xl font-extrabold text-green-600 tracking-tighter">SG</span>
+            </div>
+            <div class="absolute inset-0 bg-white rounded-3xl opacity-20 animate-ping"></div>
+        </div>
+
+        <h1 class="text-4xl font-bold mb-2 tracking-wide">البقالة الذكية</h1>
+        <p class="text-green-100 text-lg font-light tracking-widest uppercase mb-12">Smart Grocery POS</p>
+
+        <div class="flex gap-2">
+            <div class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0s"></div>
+            <div class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+            <div class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+        </div>
+
+        <div class="absolute bottom-8 text-xs text-green-200 font-roboto">v1.0.0 - Beta</div>
+    </div>
+
+
+    <div id="login-screen" class="absolute inset-0 flex items-center justify-center opacity-0">
+        
+        <div class="w-full max-w-md bg-surface p-8 rounded-3xl shadow-2xl border border-gray-100 relative overflow-hidden">
+            
+            <div class="absolute -top-20 -right-20 w-64 h-64 bg-green-50 rounded-full opacity-50 pointer-events-none"></div>
+
+            <div class="text-center mb-8 relative z-10">
+                <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center font-bold text-2xl mx-auto mb-4 shadow-lg">SG</div>
+                <h2 class="text-2xl font-bold text-textMain">مرحباً بك مجدداً</h2>
+                <p class="text-textSub text-sm mt-1">أدخل رمز المرور للمتابعة</p>
+            </div>
+
+            <div class="flex justify-center gap-4 mb-8" id="pin-display">
+                <div class="w-4 h-4 rounded-full bg-gray-200 border border-gray-300 transition-all duration-200"></div>
+                <div class="w-4 h-4 rounded-full bg-gray-200 border border-gray-300 transition-all duration-200"></div>
+                <div class="w-4 h-4 rounded-full bg-gray-200 border border-gray-300 transition-all duration-200"></div>
+                <div class="w-4 h-4 rounded-full bg-gray-200 border border-gray-300 transition-all duration-200"></div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <button onclick="addPin(1)" class="h-16 rounded-xl bg-gray-50 hover:bg-white hover:shadow-md border border-transparent hover:border-gray-200 font-roboto font-bold text-2xl text-textMain transition-all active:scale-95">1</button>
+                <button onclick="addPin(2)" class="h-16 rounded-xl bg-gray-50 hover:bg-white hover:shadow-md border border-transparent hover:border-gray-200 font-roboto font-bold text-2xl text-textMain transition-all active:scale-95">2</button>
+                <button onclick="addPin(3)" class="h-16 rounded-xl bg-gray-50 hover:bg-white hover:shadow-md border border-transparent hover:border-gray-200 font-roboto font-bold text-2xl text-textMain transition-all active:scale-95">3</button>
+                
+                <button onclick="addPin(4)" class="h-16 rounded-xl bg-gray-50 hover:bg-white hover:shadow-md border border-transparent hover:border-gray-200 font-roboto font-bold text-2xl text-textMain transition-all active:scale-95">4</button>
+                <button onclick="addPin(5)" class="h-16 rounded-xl bg-gray-50 hover:bg-white hover:shadow-md border border-transparent hover:border-gray-200 font-roboto font-bold text-2xl text-textMain transition-all active:scale-95">5</button>
+                <button onclick="addPin(6)" class="h-16 rounded-xl bg-gray-50 hover:bg-white hover:shadow-md border border-transparent hover:border-gray-200 font-roboto font-bold text-2xl text-textMain transition-all active:scale-95">6</button>
+                
+                <button onclick="addPin(7)" class="h-16 rounded-xl bg-gray-50 hover:bg-white hover:shadow-md border border-transparent hover:border-gray-200 font-roboto font-bold text-2xl text-textMain transition-all active:scale-95">7</button>
+                <button onclick="addPin(8)" class="h-16 rounded-xl bg-gray-50 hover:bg-white hover:shadow-md border border-transparent hover:border-gray-200 font-roboto font-bold text-2xl text-textMain transition-all active:scale-95">8</button>
+                <button onclick="addPin(9)" class="h-16 rounded-xl bg-gray-50 hover:bg-white hover:shadow-md border border-transparent hover:border-gray-200 font-roboto font-bold text-2xl text-textMain transition-all active:scale-95">9</button>
+                
+                <div class="h-16 flex items-center justify-center">
+                    <button class="text-sm font-bold text-primary hover:underline">نسيت؟</button>
+                </div>
+                
+                <button onclick="addPin(0)" class="h-16 rounded-xl bg-gray-50 hover:bg-white hover:shadow-md border border-transparent hover:border-gray-200 font-roboto font-bold text-2xl text-textMain transition-all active:scale-95">0</button>
+                
+                <button onclick="removePin()" class="h-16 rounded-xl bg-red-50 hover:bg-red-100 text-red-500 flex items-center justify-center transition-all active:scale-95">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"/></svg>
+                </button>
+            </div>
+
+            <div class="text-center mt-4 border-t border-gray-100 pt-4">
+                <p class="text-xs text-textSub">دعم فني: <span class="font-roboto font-bold">800-123-4567</span></p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // 1. Splash Screen Logic
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                const login = document.getElementById('login-screen');
+                
+                splash.classList.add('animate-fade-out');
+                login.classList.remove('opacity-0');
+                login.classList.add('animate-fade-in');
+            }, 3000); // 3 Seconds Delay
+        });
+
+        // 2. PIN Logic
+        let pin = "";
+        const dots = document.querySelectorAll('#pin-display div');
+
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                if (index < pin.length) {
+                    dot.className = "w-4 h-4 rounded-full bg-primary shadow-[0_0_10px_#4CAF50] scale-110 transition-all duration-200";
+                } else {
+                    dot.className = "w-4 h-4 rounded-full bg-gray-200 border border-gray-300 transition-all duration-200";
+                }
+            });
+
+            // Simulate Login Success
+            if (pin.length === 4) {
+                setTimeout(() => {
+                    alert("تم تسجيل الدخول بنجاح! \n(محاكاة الانتقال لشاشة POS)");
+                    pin = "";
+                    updateDots();
+                }, 300);
+            }
+        }
+
+        function addPin(num) {
+            if (pin.length < 4) {
+                pin += num;
+                updateDots();
+            }
+        }
+
+        function removePin() {
+            if (pin.length > 0) {
+                pin = pin.slice(0, -1);
+                updateDots();
+            }
+        }
+    </script>
+</body>
+</html>

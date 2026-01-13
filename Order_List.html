@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Order List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>`r`n</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-secondary text-white rounded-lg flex items-center justify-center font-bold">📋</div>
+            <span class="font-bold text-lg">الطلبات</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span>عودة للرئيسية</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-secondary/10 text-secondary rounded-xl font-bold">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                <span>قائمة الطلبات</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <h1 class="text-xl font-bold">طلبات اليوم</h1>
+            <div class="flex gap-3">
+                <select class="h-10 px-4 rounded-lg border border-border text-sm">
+                    <option>جميع الحالات</option>
+                    <option>بانتظار التأكيد</option>
+                    <option>قيد التجهيز</option>
+                    <option>في الطريق</option>
+                    <option>مكتمل</option>
+                </select>
+                <input type="date" value="2026-01-13"
+                    class="h-10 px-4 rounded-lg border border-border text-sm font-roboto">
+            </div>
+        </header>
+
+        <!-- Stats -->
+        <div class="px-6 py-4 grid grid-cols-4 gap-4 shrink-0">
+            <div class="bg-yellow-50 p-3 rounded-xl border border-yellow-200 text-center">
+                <p class="text-xs text-yellow-700 font-bold">بانتظار التأكيد</p>
+                <p class="text-2xl font-bold font-roboto text-yellow-700">3</p>
+            </div>
+            <div class="bg-blue-50 p-3 rounded-xl border border-blue-200 text-center">
+                <p class="text-xs text-blue-700 font-bold">قيد التجهيز</p>
+                <p class="text-2xl font-bold font-roboto text-blue-700">5</p>
+            </div>
+            <div class="bg-purple-50 p-3 rounded-xl border border-purple-200 text-center">
+                <p class="text-xs text-purple-700 font-bold">في الطريق</p>
+                <p class="text-2xl font-bold font-roboto text-purple-700">2</p>
+            </div>
+            <div class="bg-green-50 p-3 rounded-xl border border-green-200 text-center">
+                <p class="text-xs text-green-700 font-bold">مكتمل</p>
+                <p class="text-2xl font-bold font-roboto text-green-700">24</p>
+            </div>
+        </div>
+
+        <!-- Order List -->
+        <div class="flex-1 px-6 pb-6 overflow-y-auto">
+            <div class="space-y-3">
+                <!-- Pending Order -->
+                <div class="bg-surface rounded-xl border border-yellow-200 p-4 flex items-center gap-4 shadow-sm">
+                    <div class="text-center">
+                        <p class="font-roboto font-bold text-lg">#2048</p>
+                        <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-[10px] font-bold">جديد</span>
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-bold">عبدالله محمد</p>
+                        <p class="text-xs text-textSub">حي النسيم، شارع 15</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-roboto font-bold">125.00</p>
+                        <p class="text-xs text-textSub">SAR</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-textSub">5 منتجات</p>
+                        <p class="text-xs font-roboto">منذ 5 دقائق</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="px-3 py-2 bg-primary text-white rounded-lg text-xs font-bold">قبول</button>
+                        <button class="px-3 py-2 bg-error/10 text-error rounded-lg text-xs font-bold">رفض</button>
+                    </div>
+                </div>
+
+                <!-- In Progress -->
+                <div class="bg-surface rounded-xl border border-blue-200 p-4 flex items-center gap-4 shadow-sm">
+                    <div class="text-center">
+                        <p class="font-roboto font-bold text-lg">#2047</p>
+                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-[10px] font-bold">تجهيز</span>
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-bold">سارة أحمد</p>
+                        <p class="text-xs text-textSub">حي الروضة</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-roboto font-bold">89.50</p>
+                        <p class="text-xs text-textSub">SAR</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-textSub">3 منتجات</p>
+                    </div>
+                    <button class="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg text-xs font-bold">إرسال
+                        للتوصيل</button>
+                </div>
+
+                <!-- Completed -->
+                <div
+                    class="bg-surface rounded-xl border border-green-200 p-4 flex items-center gap-4 shadow-sm opacity-80">
+                    <div class="text-center">
+                        <p class="font-roboto font-bold text-lg">#2045</p>
+                        <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-[10px] font-bold">✓ مكتمل</span>
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-bold">خالد الروقي</p>
+                        <p class="text-xs text-textSub">حي الصفا</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-roboto font-bold">245.00</p>
+                        <p class="text-xs text-textSub">SAR</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-textSub">8 منتجات</p>
+                        <p class="text-xs text-green-600">★ 5.0</p>
+                    </div>
+                    <button
+                        class="px-4 py-2 border border-border rounded-lg text-xs font-bold text-textSub">التفاصيل</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

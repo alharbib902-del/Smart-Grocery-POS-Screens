@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Product Management</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50',
+                        primaryHover: '#43A047',
+                        secondary: '#2196F3',
+                        surface: '#FFFFFF',
+                        background: '#F3F4F6',
+                        error: '#EF4444',
+                        warning: '#FF9800',
+                        textMain: '#1F2937',
+                        textSub: '#6B7280',
+                        border: '#E5E7EB'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        roboto: ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #D1D5DB;
+            border-radius: 4px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+    </style>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex z-20 shadow-sm">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center font-bold">SG</div>
+            <span class="font-bold text-lg text-gray-800">البقالة الذكية</span>
+        </div>
+
+        <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 hover:text-primary rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+                <span>نقطة البيع (POS)</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-xl transition-colors font-bold">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+                <span>المنتجات</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 hover:text-primary rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                </svg>
+                <span>المخزون</span>
+            </a>
+
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 hover:text-primary rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <span>العملاء</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-border">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-textSub font-bold">
+                    A</div>
+                <div>
+                    <p class="text-sm font-bold text-textMain">Ahmed Ali</p>
+                    <p class="text-xs text-textSub">مدير النظام</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <h1 class="text-xl font-bold text-textMain">إدارة المنتجات</h1>
+
+            <div class="flex items-center gap-3">
+                <div class="relative w-64 hidden sm:block">
+                    <input type="text" placeholder="بحث عن منتج..."
+                        class="w-full h-10 pl-4 pr-10 rounded-lg bg-gray-50 border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm transition-all">
+                    <div class="absolute right-3 top-2.5 text-gray-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                </div>
+                <button
+                    class="w-10 h-10 flex items-center justify-center rounded-lg border border-border text-textSub hover:bg-gray-50">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="px-6 py-4 flex gap-4 overflow-x-auto shrink-0 custom-scroll">
+            <div
+                class="bg-surface px-4 py-2 rounded-xl border border-border shadow-sm flex items-center gap-3 min-w-[150px]">
+                <div class="w-10 h-10 rounded-full bg-blue-50 text-secondary flex items-center justify-center"><svg
+                        class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg></div>
+                <div>
+                    <p class="text-xs text-textSub font-bold">إجمالي المنتجات</p>
+                    <p class="text-lg font-bold font-roboto">1,250</p>
+                </div>
+            </div>
+
+            <div
+                class="bg-surface px-4 py-2 rounded-xl border border-red-100 shadow-sm flex items-center gap-3 min-w-[150px]">
+                <div class="w-10 h-10 rounded-full bg-red-50 text-error flex items-center justify-center"><svg
+                        class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg></div>
+                <div>
+                    <p class="text-xs text-textSub font-bold">منخفض المخزون</p>
+                    <p class="text-lg font-bold font-roboto text-error">12</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 overflow-auto px-6 pb-20 custom-scroll">
+            <div class="bg-surface rounded-xl border border-border shadow-sm overflow-hidden">
+                <table class="w-full text-right">
+                    <thead class="bg-gray-50 border-b border-border text-xs text-textSub uppercase font-bold">
+                        <tr>
+                            <th class="px-6 py-4">المنتج</th>
+                            <th class="px-6 py-4">الباركود</th>
+                            <th class="px-6 py-4">السعر</th>
+                            <th class="px-6 py-4">الكمية</th>
+                            <th class="px-6 py-4">الحالة</th>
+                            <th class="px-6 py-4 text-left">إجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-border text-sm">
+                        <tr class="hover:bg-gray-50 transition-colors group">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-xl">
+                                        🥛</div>
+                                    <div>
+                                        <p class="font-bold text-textMain">حليب المراعي 2 لتر</p>
+                                        <p class="text-xs text-textSub">الألبان</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 font-roboto text-textSub">6281007001234</td>
+                            <td class="px-6 py-4 font-roboto font-bold text-textMain">9.50 SAR</td>
+                            <td class="px-6 py-4 font-roboto">150</td>
+                            <td class="px-6 py-4">
+                                <span
+                                    class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">متوفر</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div
+                                    class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button
+                                        class="p-2 text-secondary hover:bg-blue-50 rounded-lg transition-colors"><svg
+                                            class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                        </svg></button>
+                                    <button class="p-2 text-error hover:bg-red-50 rounded-lg transition-colors"><svg
+                                            class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg></button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="hover:bg-gray-50 transition-colors group">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-xl">
+                                        🍞</div>
+                                    <div>
+                                        <p class="font-bold text-textMain">خبز توست أبيض</p>
+                                        <p class="text-xs text-textSub">المخابز</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 font-roboto text-textSub">6281007005678</td>
+                            <td class="px-6 py-4 font-roboto font-bold text-textMain">5.00 SAR</td>
+                            <td class="px-6 py-4 font-roboto">45</td>
+                            <td class="px-6 py-4">
+                                <span
+                                    class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">متوفر</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div
+                                    class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="p-2 text-secondary hover:bg-blue-50 rounded-lg"><svg class="w-4 h-4"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                        </svg></button>
+                                    <button class="p-2 text-error hover:bg-red-50 rounded-lg"><svg class="w-4 h-4"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg></button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="bg-red-50/50 hover:bg-red-50 transition-colors group">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 rounded-lg bg-white border border-gray-100 flex items-center justify-center text-xl">
+                                        🍪</div>
+                                    <div>
+                                        <p class="font-bold text-textMain">كوكيز شوكولاتة</p>
+                                        <p class="text-xs text-textSub">الحلويات</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 font-roboto text-textSub">6281007009999</td>
+                            <td class="px-6 py-4 font-roboto font-bold text-textMain">4.00 SAR</td>
+                            <td class="px-6 py-4 font-roboto font-bold text-error">3</td>
+                            <td class="px-6 py-4">
+                                <span class="bg-red-100 text-error px-2 py-1 rounded text-xs font-bold">منخفض</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div
+                                    class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="p-2 text-secondary hover:bg-blue-50 rounded-lg"><svg class="w-4 h-4"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                        </svg></button>
+                                    <button class="p-2 text-error hover:bg-red-50 rounded-lg"><svg class="w-4 h-4"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex items-center justify-between mt-4 text-xs text-textSub">
+                <span>عرض 1 إلى 3 من أصل 1,250</span>
+                <div class="flex gap-2">
+                    <button
+                        class="px-3 py-1 border border-border rounded-lg bg-white disabled:opacity-50">السابق</button>
+                    <button class="px-3 py-1 border border-border rounded-lg bg-primary text-white">1</button>
+                    <button class="px-3 py-1 border border-border rounded-lg bg-white hover:bg-gray-50">2</button>
+                    <button class="px-3 py-1 border border-border rounded-lg bg-white hover:bg-gray-50">3</button>
+                    <button class="px-3 py-1 border border-border rounded-lg bg-white hover:bg-gray-50">التالي</button>
+                </div>
+            </div>
+        </div>
+
+        <button
+            class="absolute bottom-6 left-6 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 hover:scale-105 transition-all z-30 group">
+            <svg class="w-6 h-6 group-hover:rotate-90 transition-transform" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            <span
+                class="absolute right-16 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">إضافة
+                منتج</span>
+        </button>
+
+    </main>
+</body>
+
+</html>

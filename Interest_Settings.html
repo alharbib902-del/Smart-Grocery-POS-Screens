@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Interest Settings</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50',
+                        primaryHover: '#43A047',
+                        secondary: '#2196F3',
+                        surface: '#FFFFFF',
+                        background: '#F3F4F6',
+                        error: '#EF4444',
+                        warning: '#FF9800',
+                        textMain: '#1F2937',
+                        textSub: '#6B7280',
+                        border: '#E5E7EB'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        roboto: ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>`r`n</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex z-20 shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center font-bold">SG</div>
+            <span class="font-bold text-lg text-gray-800">الإعدادات المالية</span>
+        </div>
+
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 hover:text-primary rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span>عودة للرئيسية</span>
+            </a>
+            <div class="pt-4 pb-2 px-4 text-xs font-bold text-textSub uppercase">إعدادات الديون</div>
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-xl transition-colors font-bold">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>إعدادات الفوائد</span>
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 hover:text-primary rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span>إقفال الشهر</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+
+        <!-- Header -->
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0 z-10">
+            <h1 class="text-xl font-bold text-textMain">إعدادات الفوائد الشهرية</h1>
+            <button
+                class="px-6 h-10 rounded-lg bg-primary text-white font-bold hover:bg-primaryHover shadow-sm flex items-center gap-2 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>حفظ الإعدادات</span>
+            </button>
+        </header>
+
+        <!-- Content -->
+        <div class="flex-1 overflow-y-auto p-6">
+            <div class="max-w-3xl mx-auto space-y-6">
+
+                <!-- Warning Banner -->
+                <div class="bg-orange-50 border border-orange-200 rounded-xl p-4 flex items-start gap-4">
+                    <div
+                        class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-orange-800">ملاحظة قانونية</h3>
+                        <p class="text-sm text-orange-700">تطبيق الفوائد على الديون يخضع للأنظمة المحلية. تأكد من
+                            التزامك بالقوانين المعمول بها في منطقتك.</p>
+                    </div>
+                </div>
+
+                <!-- Enable Interest -->
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-100">
+                        <div>
+                            <h2 class="font-bold text-lg text-textMain">تفعيل نظام الفوائد</h2>
+                            <p class="text-sm text-textSub">عند التفعيل، ستُحسب الفوائد تلقائياً نهاية كل شهر</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="enable-interest" checked class="sr-only peer">
+                            <div
+                                class="w-14 h-7 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary">
+                            </div>
+                        </label>
+                    </div>
+
+                    <div id="interest-settings" class="space-y-6">
+                        <!-- Interest Rate -->
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-3">نسبة الفائدة الشهرية (%)</label>
+                            <div class="flex items-center gap-4">
+                                <input type="range" min="0" max="10" step="0.5" value="5"
+                                    class="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
+                                    id="interest-rate">
+                                <div
+                                    class="w-20 h-12 bg-gray-50 border border-border rounded-lg flex items-center justify-center">
+                                    <span class="font-roboto font-bold text-xl text-primary" id="rate-display">5%</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between text-xs text-textSub mt-2">
+                                <span>0%</span>
+                                <span>5%</span>
+                                <span>10%</span>
+                            </div>
+                        </div>
+
+                        <!-- Grace Period -->
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-3">فترة السماح (أيام)</label>
+                            <p class="text-xs text-textSub mb-3">عدد الأيام قبل بدء احتساب الفائدة من تاريخ الفاتورة</p>
+                            <div class="grid grid-cols-4 gap-3">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="grace_period" value="0" class="peer sr-only">
+                                    <div
+                                        class="h-12 rounded-lg border border-border peer-checked:border-primary peer-checked:bg-green-50 peer-checked:text-primary flex items-center justify-center font-bold transition-all">
+                                        0 يوم
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="grace_period" value="7" class="peer sr-only">
+                                    <div
+                                        class="h-12 rounded-lg border border-border peer-checked:border-primary peer-checked:bg-green-50 peer-checked:text-primary flex items-center justify-center font-bold transition-all">
+                                        7 أيام
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="grace_period" value="14" class="peer sr-only" checked>
+                                    <div
+                                        class="h-12 rounded-lg border border-border peer-checked:border-primary peer-checked:bg-green-50 peer-checked:text-primary flex items-center justify-center font-bold transition-all">
+                                        14 يوم
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="grace_period" value="30" class="peer sr-only">
+                                    <div
+                                        class="h-12 rounded-lg border border-border peer-checked:border-primary peer-checked:bg-green-50 peer-checked:text-primary flex items-center justify-center font-bold transition-all">
+                                        30 يوم
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Minimum Balance -->
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">الحد الأدنى للفائدة (SAR)</label>
+                            <p class="text-xs text-textSub mb-3">لا تُحتسب الفائدة إذا كان الرصيد أقل من هذا المبلغ</p>
+                            <div class="relative w-48">
+                                <input type="number" value="50"
+                                    class="w-full h-12 pl-12 pr-4 rounded-lg border border-border focus:border-primary outline-none font-roboto font-bold text-center">
+                                <span class="absolute left-4 top-3 text-textSub text-sm">SAR</span>
+                            </div>
+                        </div>
+
+                        <!-- Max Interest -->
+                        <div>
+                            <label class="block text-sm font-bold text-textSub mb-2">الحد الأقصى للفائدة (SAR)</label>
+                            <p class="text-xs text-textSub mb-3">الحد الأقصى للفائدة المحتسبة شهرياً لكل عميل</p>
+                            <div class="relative w-48">
+                                <input type="number" value="500"
+                                    class="w-full h-12 pl-12 pr-4 rounded-lg border border-border focus:border-primary outline-none font-roboto font-bold text-center">
+                                <span class="absolute left-4 top-3 text-textSub text-sm">SAR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculation Example -->
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                    <h3 class="font-bold text-blue-800 mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        مثال على الحساب
+                    </h3>
+                    <div class="bg-white rounded-lg p-4 text-sm space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-textSub">رصيد العميل:</span>
+                            <span class="font-roboto font-bold">1,000 SAR</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-textSub">نسبة الفائدة:</span>
+                            <span class="font-roboto font-bold">5%</span>
+                        </div>
+                        <div class="flex justify-between border-t border-blue-100 pt-2 text-blue-700">
+                            <span class="font-bold">الفائدة الشهرية:</span>
+                            <span class="font-roboto font-bold">50 SAR</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const rateSlider = document.getElementById('interest-rate');
+        const rateDisplay = document.getElementById('rate-display');
+
+        rateSlider.addEventListener('input', function () {
+            rateDisplay.textContent = this.value + '%';
+        });
+
+        const enableCheckbox = document.getElementById('enable-interest');
+        const settingsDiv = document.getElementById('interest-settings');
+
+        enableCheckbox.addEventListener('change', function () {
+            settingsDiv.style.opacity = this.checked ? '1' : '0.5';
+            settingsDiv.style.pointerEvents = this.checked ? 'auto' : 'none';
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Driver List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800', purpleAI: '#7C3AED',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>`r`n</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-purpleAI text-white rounded-lg flex items-center justify-center font-bold">🚗</div>
+            <span class="font-bold text-lg">المناديب</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">عودة
+                للرئيسية</a>
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 bg-purpleAI/10 text-purpleAI rounded-xl font-bold">قائمة
+                المناديب</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <h1 class="text-xl font-bold">إدارة المناديب</h1>
+            <button
+                class="px-4 py-2 bg-purpleAI text-white rounded-lg font-bold hover:bg-purple-600 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                إضافة مندوب
+            </button>
+        </header>
+
+        <!-- Stats -->
+        <div class="px-6 py-4 grid grid-cols-4 gap-4 shrink-0">
+            <div class="bg-surface p-4 rounded-xl border border-border shadow-sm text-center">
+                <p class="text-xs text-textSub font-bold">إجمالي المناديب</p>
+                <p class="text-2xl font-bold font-roboto">5</p>
+            </div>
+            <div class="bg-green-50 p-4 rounded-xl border border-green-200 shadow-sm text-center">
+                <p class="text-xs text-green-600 font-bold">متاحين الآن</p>
+                <p class="text-2xl font-bold font-roboto text-green-700">3</p>
+            </div>
+            <div class="bg-blue-50 p-4 rounded-xl border border-blue-200 shadow-sm text-center">
+                <p class="text-xs text-blue-600 font-bold">في الطريق</p>
+                <p class="text-2xl font-bold font-roboto text-blue-700">2</p>
+            </div>
+            <div class="bg-surface p-4 rounded-xl border border-border shadow-sm text-center">
+                <p class="text-xs text-textSub font-bold">طلبات اليوم</p>
+                <p class="text-2xl font-bold font-roboto">34</p>
+            </div>
+        </div>
+
+        <!-- Driver List -->
+        <div class="flex-1 px-6 pb-6 overflow-y-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Driver Online -->
+                <div
+                    class="bg-surface rounded-xl border border-green-200 p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center font-bold">
+                                MA</div>
+                            <div>
+                                <h3 class="font-bold">محمد علي</h3>
+                                <p class="text-xs text-textSub font-roboto">055 123 4567</p>
+                            </div>
+                        </div>
+                        <span
+                            class="bg-green-100 text-green-700 px-2 py-1 rounded text-[10px] font-bold flex items-center gap-1">
+                            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                            متاح
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-center text-sm bg-gray-50 rounded-lg p-2">
+                        <div>
+                            <p class="font-roboto font-bold">12</p>
+                            <p class="text-[10px] text-textSub">طلبات اليوم</p>
+                        </div>
+                        <div>
+                            <p class="font-roboto font-bold">25 د</p>
+                            <p class="text-[10px] text-textSub">متوسط الوقت</p>
+                        </div>
+                        <div>
+                            <p class="font-roboto font-bold text-yellow-600">★ 4.8</p>
+                            <p class="text-[10px] text-textSub">التقييم</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Driver Busy -->
+                <div
+                    class="bg-surface rounded-xl border border-blue-200 p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center font-bold">
+                                AK</div>
+                            <div>
+                                <h3 class="font-bold">عبدالله خالد</h3>
+                                <p class="text-xs text-textSub font-roboto">050 987 6543</p>
+                            </div>
+                        </div>
+                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-[10px] font-bold">🚗 في
+                            الطريق</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-center text-sm bg-gray-50 rounded-lg p-2">
+                        <div>
+                            <p class="font-roboto font-bold">8</p>
+                            <p class="text-[10px] text-textSub">طلبات اليوم</p>
+                        </div>
+                        <div>
+                            <p class="font-roboto font-bold">22 د</p>
+                            <p class="text-[10px] text-textSub">متوسط الوقت</p>
+                        </div>
+                        <div>
+                            <p class="font-roboto font-bold text-yellow-600">★ 4.9</p>
+                            <p class="text-[10px] text-textSub">التقييم</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Driver Offline -->
+                <div class="bg-surface rounded-xl border border-gray-200 p-4 shadow-sm opacity-60">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center font-bold">
+                                FS</div>
+                            <div>
+                                <h3 class="font-bold">فهد سعيد</h3>
+                                <p class="text-xs text-textSub font-roboto">054 111 2222</p>
+                            </div>
+                        </div>
+                        <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded text-[10px] font-bold">غير متاح</span>
+                    </div>
+                    <p class="text-xs text-textSub text-center bg-gray-50 rounded-lg py-2">آخر نشاط: منذ 3 ساعات</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

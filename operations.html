@@ -1,0 +1,348 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Phase 2 Operations</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50',
+                        primaryHover: '#43A047',
+                        secondary: '#2196F3',
+                        surface: '#FFFFFF',
+                        background: '#F3F4F6',
+                        error: '#EF4444',
+                        warning: '#FF9800',
+                        textMain: '#1F2937',
+                        textSub: '#6B7280',
+                        border: '#E5E7EB'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        roboto: ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 4px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .hide-section { display: none; }
+        .active-nav { background-color: rgba(76, 175, 80, 0.1); color: #4CAF50; font-weight: bold; }
+    </style>
+    <script src="navigation.js" defer></script>`r`n</head>
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex z-20 shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center font-bold">SG</div>
+            <span class="font-bold text-lg text-gray-800">العمليات</span>
+        </div>
+        
+        <nav class="flex-1 p-4 space-y-1">
+            <button onclick="switchView('inventory')" id="nav-inventory" class="w-full flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 hover:text-primary rounded-xl transition-colors active-nav">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                <span>المخزون (Inventory)</span>
+            </button>
+            
+            <button onclick="switchView('suppliers')" id="nav-suppliers" class="w-full flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 hover:text-primary rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                <span>الموردين (Suppliers)</span>
+            </button>
+
+            <button onclick="switchView('purchases')" id="nav-purchases" class="w-full flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 hover:text-primary rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                <span>المشتريات (Purchases)</span>
+            </button>
+
+            <button onclick="switchView('orders')" id="nav-orders" class="w-full flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 hover:text-primary rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+                <span>الطلبات (Orders)</span>
+            </button>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+
+        <div id="view-inventory" class="flex-1 flex flex-col h-full">
+            <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+                <h1 class="text-xl font-bold text-textMain">إدارة المخزون</h1>
+                <div class="flex gap-2">
+                    <button class="px-4 py-2 border border-border rounded-lg text-textSub hover:bg-gray-50 text-sm font-bold">تصدير Excel</button>
+                    <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-green-600 text-sm font-bold flex items-center gap-2">
+                        <span>جرد المخزون</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="p-6 pb-0 grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-surface p-4 rounded-xl border border-border shadow-sm">
+                    <p class="text-xs text-textSub font-bold">إجمالي الأصناف</p>
+                    <p class="text-2xl font-bold font-roboto text-textMain">1,450</p>
+                </div>
+                <div class="bg-surface p-4 rounded-xl border border-red-200 shadow-sm bg-red-50/50">
+                    <p class="text-xs text-textSub font-bold text-error">مخزون منخفض</p>
+                    <p class="text-2xl font-bold font-roboto text-error">12</p>
+                </div>
+                <div class="bg-surface p-4 rounded-xl border border-border shadow-sm">
+                    <p class="text-xs text-textSub font-bold">قيمة المخزون</p>
+                    <p class="text-2xl font-bold font-roboto text-primary">45,200 <span class="text-sm text-textSub">SAR</span></p>
+                </div>
+            </div>
+
+            <div class="flex-1 p-6 overflow-y-auto custom-scroll">
+                <div class="bg-surface rounded-xl border border-border overflow-hidden">
+                    <table class="w-full text-right">
+                        <thead class="bg-gray-50 border-b border-border text-xs text-textSub uppercase font-bold">
+                            <tr>
+                                <th class="px-6 py-4">المنتج</th>
+                                <th class="px-6 py-4">الباركود</th>
+                                <th class="px-6 py-4">المخزون الحالي</th>
+                                <th class="px-6 py-4">الحالة</th>
+                                <th class="px-6 py-4">تعديل سريع</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-border text-sm">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-bold">حليب المراعي 2 لتر</td>
+                                <td class="px-6 py-4 font-roboto text-textSub">6281007001234</td>
+                                <td class="px-6 py-4 font-roboto font-bold">150</td>
+                                <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">جيد</span></td>
+                                <td class="px-6 py-4"><button onclick="openAdjustModal('حليب المراعي 2 لتر', 150)" class="text-secondary hover:underline text-xs font-bold">تعديل (+/-)</button></td>
+                            </tr>
+                            <tr class="bg-red-50 hover:bg-red-100">
+                                <td class="px-6 py-4 font-bold">كوكيز شوكولاتة</td>
+                                <td class="px-6 py-4 font-roboto text-textSub">6281007009999</td>
+                                <td class="px-6 py-4 font-roboto font-bold text-error">3</td>
+                                <td class="px-6 py-4"><span class="bg-red-200 text-error px-2 py-1 rounded text-xs font-bold">منخفض</span></td>
+                                <td class="px-6 py-4"><button onclick="openAdjustModal('كوكيز شوكولاتة', 3)" class="text-secondary hover:underline text-xs font-bold">تعديل (+/-)</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-suppliers" class="flex-1 flex flex-col h-full hide-section">
+            <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+                <h1 class="text-xl font-bold text-textMain">قائمة الموردين</h1>
+                <button onclick="alert('فتح نموذج إضافة مورد')" class="px-4 py-2 bg-secondary text-white rounded-lg hover:bg-blue-600 text-sm font-bold flex items-center gap-2">
+                    <span>+ إضافة مورد</span>
+                </button>
+            </header>
+
+            <div class="flex-1 p-6 overflow-y-auto custom-scroll">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-surface p-5 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex gap-3">
+                                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-lg">AL</div>
+                                <div>
+                                    <h3 class="font-bold text-lg">شركة المراعي</h3>
+                                    <p class="text-xs text-textSub">ألبان وعصائر</p>
+                                </div>
+                            </div>
+                            <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-[10px] font-bold">نشط</span>
+                        </div>
+                        <div class="border-t border-border pt-4 mt-2">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-textSub">الرصيد المستحق:</span>
+                                <span class="font-roboto font-bold">12,500 SAR</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-textSub">آخر توريد:</span>
+                                <span class="font-roboto">2025-10-12</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex gap-2">
+                            <button class="flex-1 py-2 border border-border rounded-lg text-xs font-bold hover:bg-gray-50">كشف حساب</button>
+                            <button class="flex-1 py-2 bg-primary text-white rounded-lg text-xs font-bold hover:bg-green-600">طلب بضاعة</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-surface p-5 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex gap-3">
+                                <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold text-lg">NA</div>
+                                <div>
+                                    <h3 class="font-bold text-lg">نادك</h3>
+                                    <p class="text-xs text-textSub">ألبان وزراعة</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-t border-border pt-4 mt-2">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-textSub">الرصيد المستحق:</span>
+                                <span class="font-roboto font-bold text-green-600">0.00 SAR</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-textSub">آخر توريد:</span>
+                                <span class="font-roboto">2025-09-20</span>
+                            </div>
+                        </div>
+                         <div class="mt-4 flex gap-2">
+                            <button class="flex-1 py-2 border border-border rounded-lg text-xs font-bold hover:bg-gray-50">كشف حساب</button>
+                            <button class="flex-1 py-2 bg-primary text-white rounded-lg text-xs font-bold hover:bg-green-600">طلب بضاعة</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-purchases" class="flex-1 flex flex-col h-full hide-section">
+            <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+                <h1 class="text-xl font-bold text-textMain">فواتير المشتريات</h1>
+                <div class="flex gap-2">
+                     <button class="px-4 py-2 bg-purple-100 text-purple-700 border border-purple-200 rounded-lg hover:bg-purple-200 text-sm font-bold flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <span>استيراد ذكي (AI Scan)</span>
+                    </button>
+                    <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-green-600 text-sm font-bold flex items-center gap-2">
+                        <span>+ فاتورة جديدة</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="flex-1 p-6 flex items-center justify-center bg-gray-50">
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-400">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-700">لا توجد فواتير معلقة</h3>
+                    <p class="text-sm text-gray-500 mb-6">ابدأ بإضافة فاتورة شراء جديدة أو استخدم الاستيراد الذكي</p>
+                    
+                    <div class="max-w-md mx-auto bg-white p-6 rounded-xl border-2 border-dashed border-purple-300">
+                        <h4 class="font-bold text-purple-700 mb-2">تجربة الاستيراد الذكي</h4>
+                        <p class="text-xs text-gray-500 mb-4">قم برفع صورة فاتورة وسيقوم النظام بقراءة الأصناف تلقائياً</p>
+                        <button class="w-full py-3 bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold rounded-lg border border-purple-200 transition-colors">
+                            رفع صورة (Scan)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-orders" class="flex-1 flex flex-col h-full hide-section">
+            <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+                <h1 class="text-xl font-bold text-textMain">سجل الطلبات</h1>
+                <div class="flex bg-gray-100 p-1 rounded-lg">
+                    <button class="px-4 py-1.5 bg-white shadow-sm rounded-md text-sm font-bold text-textMain">الكل</button>
+                    <button class="px-4 py-1.5 text-sm font-bold text-textSub hover:bg-gray-200 rounded-md">المكتملة</button>
+                    <button class="px-4 py-1.5 text-sm font-bold text-textSub hover:bg-gray-200 rounded-md">المرتجعة</button>
+                </div>
+            </header>
+
+            <div class="flex-1 p-6 overflow-y-auto custom-scroll">
+                <div class="bg-surface rounded-xl border border-border overflow-hidden">
+                    <table class="w-full text-right">
+                        <thead class="bg-gray-50 border-b border-border text-xs text-textSub uppercase font-bold">
+                            <tr>
+                                <th class="px-6 py-4">رقم الطلب</th>
+                                <th class="px-6 py-4">العميل</th>
+                                <th class="px-6 py-4">التاريخ</th>
+                                <th class="px-6 py-4">الإجمالي</th>
+                                <th class="px-6 py-4">الحالة</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-border text-sm">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-roboto font-bold">#1023</td>
+                                <td class="px-6 py-4">عميل عام</td>
+                                <td class="px-6 py-4 font-roboto text-textSub">10:30 PM</td>
+                                <td class="px-6 py-4 font-roboto font-bold">71.55</td>
+                                <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-[10px] font-bold">مدفوع</span></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-roboto font-bold">#1022</td>
+                                <td class="px-6 py-4">خالد الروقي</td>
+                                <td class="px-6 py-4 font-roboto text-textSub">09:15 PM</td>
+                                <td class="px-6 py-4 font-roboto font-bold">150.00</td>
+                                <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-[10px] font-bold">مدفوع</span></td>
+                            </tr>
+                             <tr class="hover:bg-gray-50 bg-orange-50/30">
+                                <td class="px-6 py-4 font-roboto font-bold">#1021</td>
+                                <td class="px-6 py-4">أحمد حسن</td>
+                                <td class="px-6 py-4 font-roboto text-textSub">08:00 PM</td>
+                                <td class="px-6 py-4 font-roboto font-bold">450.00</td>
+                                <td class="px-6 py-4"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-[10px] font-bold">آجل (دين)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="adjust-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-gray-900/50 backdrop-blur-sm">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 transform scale-95 transition-transform" id="adjust-modal-panel">
+            <h3 class="text-lg font-bold mb-4">تعديل المخزون</h3>
+            <p class="text-sm text-gray-500 mb-4">المنتج: <span id="modal-product-name" class="font-bold text-gray-800"></span></p>
+            
+            <div class="flex items-center justify-center gap-4 mb-6">
+                <button class="w-12 h-12 rounded-full bg-red-100 text-red-600 text-2xl font-bold flex items-center justify-center hover:bg-red-200">-</button>
+                <input type="number" id="modal-qty" class="w-24 h-12 text-center text-xl font-bold border border-gray-300 rounded-lg" value="0">
+                <button class="w-12 h-12 rounded-full bg-green-100 text-green-600 text-2xl font-bold flex items-center justify-center hover:bg-green-200">+</button>
+            </div>
+            
+            <div class="mb-6">
+                <label class="block text-xs font-bold text-gray-500 mb-2">سبب التعديل</label>
+                <select class="w-full h-10 border border-gray-300 rounded-lg text-sm">
+                    <option>جرد دوري</option>
+                    <option>تالف / منتهي الصلاحية</option>
+                    <option>هدية / عينات</option>
+                    <option>استلام بضاعة</option>
+                </select>
+            </div>
+
+            <div class="flex gap-3">
+                <button onclick="closeAdjustModal()" class="flex-1 h-12 border border-gray-300 rounded-xl font-bold text-gray-600 hover:bg-gray-50">إلغاء</button>
+                <button onclick="closeAdjustModal()" class="flex-1 h-12 bg-primary text-white rounded-xl font-bold hover:bg-green-600">حفظ</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchView(viewId) {
+            // Hide all views
+            ['inventory', 'suppliers', 'purchases', 'orders'].forEach(id => {
+                document.getElementById('view-' + id).classList.add('hide-section');
+                document.getElementById('nav-' + id).classList.remove('active-nav');
+            });
+            
+            // Show selected view
+            document.getElementById('view-' + viewId).classList.remove('hide-section');
+            document.getElementById('nav-' + viewId).classList.add('active-nav');
+        }
+
+        // Modal Logic
+        function openAdjustModal(productName, currentQty) {
+            document.getElementById('modal-product-name').innerText = productName;
+            document.getElementById('modal-qty').value = currentQty;
+            document.getElementById('adjust-modal').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('adjust-modal-panel').classList.remove('scale-95');
+                document.getElementById('adjust-modal-panel').classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeAdjustModal() {
+            document.getElementById('adjust-modal-panel').classList.remove('scale-100');
+            document.getElementById('adjust-modal-panel').classList.add('scale-95');
+            setTimeout(() => {
+                document.getElementById('adjust-modal').classList.add('hidden');
+            }, 150);
+        }
+    </script>
+</body>
+</html>

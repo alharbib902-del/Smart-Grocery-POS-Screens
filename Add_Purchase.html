@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Add Purchase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800', purpleAI: '#7C3AED',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>`r`n</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-warning text-white rounded-lg flex items-center justify-center font-bold">📦</div>
+            <span class="font-bold text-lg">فاتورة مشتريات</span>
+        </div>
+        <nav class="flex-1 p-4">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span>إلغاء</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <h1 class="text-xl font-bold">إضافة فاتورة مشتريات</h1>
+            <div class="flex gap-3">
+                <button
+                    class="px-4 py-2 bg-purpleAI text-white rounded-lg font-bold hover:bg-purple-600 flex items-center gap-2">
+                    <span>📷</span> استيراد بالـ AI
+                </button>
+                <button
+                    class="px-4 py-2 bg-primary text-white rounded-lg font-bold hover:bg-green-600 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    حفظ الفاتورة
+                </button>
+            </div>
+        </header>
+
+        <div class="flex-1 flex overflow-hidden">
+            <!-- Form -->
+            <div class="w-1/3 bg-surface border-l border-border p-6 overflow-y-auto">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-textSub mb-2">المورد <span
+                                class="text-error">*</span></label>
+                        <select
+                            class="w-full h-12 px-4 rounded-lg border border-border focus:border-primary outline-none">
+                            <option>اختر المورد...</option>
+                            <option selected>شركة المراعي</option>
+                            <option>مخابز الريف</option>
+                            <option>شركة المحلية للمعلبات</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-textSub mb-2">رقم الفاتورة</label>
+                        <input type="text" dir="ltr" placeholder="رقم فاتورة المورد"
+                            class="w-full h-12 px-4 rounded-lg border border-border focus:border-primary outline-none font-roboto">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-textSub mb-2">تاريخ الفاتورة</label>
+                        <input type="date" value="2026-01-13"
+                            class="w-full h-12 px-4 rounded-lg border border-border focus:border-primary outline-none font-roboto">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-textSub mb-2">طريقة الدفع</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="pay" checked class="peer sr-only">
+                                <div
+                                    class="h-10 rounded-lg border border-border peer-checked:border-primary peer-checked:bg-green-50 flex items-center justify-center font-bold text-sm">
+                                    نقد</div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="pay" class="peer sr-only">
+                                <div
+                                    class="h-10 rounded-lg border border-border peer-checked:border-primary peer-checked:bg-green-50 flex items-center justify-center font-bold text-sm">
+                                    آجل</div>
+                            </label>
+                        </div>
+                    </div>
+                    <hr class="border-gray-100">
+                    <div>
+                        <label class="block text-sm font-bold text-textSub mb-2">إضافة منتج للفاتورة</label>
+                        <input type="text" placeholder="🔍 بحث أو باركود..."
+                            class="w-full h-12 px-4 rounded-lg border border-border focus:border-primary outline-none">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Items List -->
+            <div class="flex-1 flex flex-col overflow-hidden">
+                <div class="flex-1 p-4 overflow-y-auto">
+                    <div class="space-y-3">
+                        <div class="bg-white border border-border rounded-xl p-4 flex items-center gap-4">
+                            <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-xl">🥛
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-bold">حليب المراعي 2 لتر</p>
+                                <p class="text-xs text-textSub font-roboto">6281007001234</p>
+                            </div>
+                            <div class="w-24 text-center">
+                                <input type="number" value="50"
+                                    class="w-full h-10 text-center rounded-lg border border-border font-roboto font-bold">
+                                <p class="text-xs text-textSub">الكمية</p>
+                            </div>
+                            <div class="w-24 text-center">
+                                <input type="number" value="7.50"
+                                    class="w-full h-10 text-center rounded-lg border border-border font-roboto font-bold">
+                                <p class="text-xs text-textSub">السعر</p>
+                            </div>
+                            <div class="w-24 text-left">
+                                <p class="font-roboto font-bold text-lg text-primary">375.00</p>
+                                <p class="text-xs text-textSub">الإجمالي</p>
+                            </div>
+                            <button class="text-error hover:bg-red-50 p-2 rounded-lg">✕</button>
+                        </div>
+
+                        <div class="bg-white border border-border rounded-xl p-4 flex items-center gap-4">
+                            <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-xl">🧈
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-bold">زبدة المراعي 400غ</p>
+                                <p class="text-xs text-textSub font-roboto">6281007002345</p>
+                            </div>
+                            <div class="w-24 text-center">
+                                <input type="number" value="20"
+                                    class="w-full h-10 text-center rounded-lg border border-border font-roboto font-bold">
+                                <p class="text-xs text-textSub">الكمية</p>
+                            </div>
+                            <div class="w-24 text-center">
+                                <input type="number" value="12.00"
+                                    class="w-full h-10 text-center rounded-lg border border-border font-roboto font-bold">
+                                <p class="text-xs text-textSub">السعر</p>
+                            </div>
+                            <div class="w-24 text-left">
+                                <p class="font-roboto font-bold text-lg text-primary">240.00</p>
+                            </div>
+                            <button class="text-error hover:bg-red-50 p-2 rounded-lg">✕</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="bg-surface border-t border-border p-4 flex justify-between items-center">
+                    <div class="flex gap-6">
+                        <div>
+                            <p class="text-xs text-textSub">عدد المنتجات</p>
+                            <p class="font-bold font-roboto text-lg">2</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-textSub">إجمالي الكميات</p>
+                            <p class="font-bold font-roboto text-lg">70</p>
+                        </div>
+                    </div>
+                    <div class="bg-warning/10 px-6 py-3 rounded-xl border border-warning/20">
+                        <p class="text-xs text-textSub">إجمالي الفاتورة</p>
+                        <p class="font-bold font-roboto text-2xl text-warning">615.00 SAR</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

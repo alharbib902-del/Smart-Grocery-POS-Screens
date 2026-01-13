@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Cashier Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800', purpleAI: '#7C3AED',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-purpleAI text-white rounded-lg flex items-center justify-center font-bold">👤</div>
+            <span class="font-bold text-lg">أداء الكاشير</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">🏠
+                الرئيسية</a>
+            <a href="dashboard.html"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">📊 لوحة التحكم</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-purpleAI/10 text-purpleAI rounded-xl font-bold">👤
+                أداء الكاشير</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <h1 class="text-xl font-bold">تقرير أداء الكاشير</h1>
+            <div class="flex gap-3">
+                <select class="h-10 px-4 rounded-lg border border-border">
+                    <option>جميع الموظفين</option>
+                    <option>محمد علي</option>
+                    <option>أحمد خالد</option>
+                </select>
+                <input type="date" value="2026-01-13" class="h-10 px-4 rounded-lg border border-border font-roboto">
+                <button class="px-4 py-2 border border-border rounded-lg font-bold">📥 تصدير</button>
+            </div>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-6">
+            <div class="max-w-5xl mx-auto space-y-6">
+                <!-- Summary Cards -->
+                <div class="grid grid-cols-4 gap-4">
+                    <div class="bg-surface p-4 rounded-xl border border-border shadow-sm text-center">
+                        <p class="text-xs text-textSub font-bold">إجمالي الفواتير</p>
+                        <p class="text-2xl font-bold font-roboto">342</p>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-xl border border-green-200 shadow-sm text-center">
+                        <p class="text-xs text-green-600 font-bold">إجمالي المبيعات</p>
+                        <p class="text-2xl font-bold font-roboto text-green-700">45,230 SAR</p>
+                    </div>
+                    <div class="bg-surface p-4 rounded-xl border border-border shadow-sm text-center">
+                        <p class="text-xs text-textSub font-bold">متوسط الفاتورة</p>
+                        <p class="text-2xl font-bold font-roboto">132 SAR</p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-200 shadow-sm text-center">
+                        <p class="text-xs text-blue-600 font-bold">متوسط الوقت</p>
+                        <p class="text-2xl font-bold font-roboto text-blue-700">2:45 د</p>
+                    </div>
+                </div>
+
+                <!-- Cashier Comparison -->
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h2 class="font-bold text-lg mb-4">مقارنة أداء الموظفين</h2>
+                    <div class="space-y-4">
+                        <!-- Cashier 1 -->
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-purpleAI text-white flex items-center justify-center font-bold">
+                                MA</div>
+                            <div class="flex-1">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-bold">محمد علي</span>
+                                    <span class="font-roboto font-bold text-primary">28,450 SAR</span>
+                                </div>
+                                <div class="bg-gray-100 rounded-full h-3">
+                                    <div class="bg-purpleAI h-3 rounded-full" style="width: 65%"></div>
+                                </div>
+                                <p class="text-xs text-textSub mt-1">185 فاتورة | متوسط 2:30 د</p>
+                            </div>
+                        </div>
+
+                        <!-- Cashier 2 -->
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-secondary text-white flex items-center justify-center font-bold">
+                                AK</div>
+                            <div class="flex-1">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-bold">أحمد خالد</span>
+                                    <span class="font-roboto font-bold text-primary">16,780 SAR</span>
+                                </div>
+                                <div class="bg-gray-100 rounded-full h-3">
+                                    <div class="bg-secondary h-3 rounded-full" style="width: 35%"></div>
+                                </div>
+                                <p class="text-xs text-textSub mt-1">157 فاتورة | متوسط 3:00 د</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Table -->
+                <div class="bg-surface rounded-xl border border-border shadow-sm overflow-hidden">
+                    <div class="px-6 py-4 border-b border-border">
+                        <h3 class="font-bold">تفاصيل الورديات</h3>
+                    </div>
+                    <table class="w-full text-right">
+                        <thead class="bg-gray-50 text-xs text-textSub uppercase font-bold">
+                            <tr>
+                                <th class="px-6 py-3">الموظف</th>
+                                <th class="px-6 py-3">الوردية</th>
+                                <th class="px-6 py-3">الفواتير</th>
+                                <th class="px-6 py-3">المبيعات</th>
+                                <th class="px-6 py-3">المرتجعات</th>
+                                <th class="px-6 py-3">الأداء</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-border text-sm">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-bold">محمد علي</td>
+                                <td class="px-6 py-4 font-roboto">08:00 - 16:00</td>
+                                <td class="px-6 py-4 font-roboto">185</td>
+                                <td class="px-6 py-4 font-roboto font-bold text-primary">28,450</td>
+                                <td class="px-6 py-4 font-roboto text-error">-350</td>
+                                <td class="px-6 py-4"><span
+                                        class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">ممتاز
+                                        ⭐</span></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-bold">أحمد خالد</td>
+                                <td class="px-6 py-4 font-roboto">16:00 - 00:00</td>
+                                <td class="px-6 py-4 font-roboto">157</td>
+                                <td class="px-6 py-4 font-roboto font-bold text-primary">16,780</td>
+                                <td class="px-6 py-4 font-roboto text-error">-120</td>
+                                <td class="px-6 py-4"><span
+                                        class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs font-bold">جيد</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

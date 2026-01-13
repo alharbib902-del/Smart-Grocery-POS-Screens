@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery POS - الرئيسية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800', purpleAI: '#7C3AED', gold: '#F59E0B',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background text-textMain font-cairo min-h-screen">
+    <!-- Header -->
+    <header class="bg-primary text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div
+                    class="w-12 h-12 bg-white text-primary rounded-xl flex items-center justify-center font-bold text-xl">
+                    SG</div>
+                <div>
+                    <h1 class="text-2xl font-bold">Smart Grocery POS</h1>
+                    <p class="text-green-100 text-sm">نظام نقاط البيع للبقالة الذكية</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="Login_Screen.html"
+                    class="px-4 py-2 bg-white/20 rounded-lg hover:bg-white/30 transition-colors">تسجيل الدخول</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-8">
+        <!-- Quick Actions -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <a href="pos.html"
+                class="bg-primary text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 text-center">
+                <div class="text-4xl mb-3">🛒</div>
+                <h3 class="font-bold text-lg">نقطة البيع</h3>
+                <p class="text-green-100 text-sm">بدء البيع</p>
+            </a>
+            <a href="dashboard.html"
+                class="bg-secondary text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 text-center">
+                <div class="text-4xl mb-3">📊</div>
+                <h3 class="font-bold text-lg">لوحة التحكم</h3>
+                <p class="text-blue-100 text-sm">التقارير والإحصائيات</p>
+            </a>
+            <a href="Product_List.html"
+                class="bg-warning text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 text-center">
+                <div class="text-4xl mb-3">📦</div>
+                <h3 class="font-bold text-lg">المنتجات</h3>
+                <p class="text-orange-100 text-sm">إدارة المخزون</p>
+            </a>
+            <a href="Order_List.html"
+                class="bg-purpleAI text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 text-center">
+                <div class="text-4xl mb-3">📋</div>
+                <h3 class="font-bold text-lg">الطلبات</h3>
+                <p class="text-purple-100 text-sm">طلبات التوصيل</p>
+            </a>
+        </div>
+
+        <!-- All Screens Grid -->
+        <h2 class="text-xl font-bold mb-4 border-b border-border pb-2">جميع الشاشات (47 شاشة)</h2>
+
+        <!-- Phase 1: POS -->
+        <div class="mb-6">
+            <h3 class="font-bold text-primary mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 bg-primary rounded-full"></span>
+                Phase 1: نقاط البيع الأساسية
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                <a href="Login_Screen.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">🔐</div>
+                    <p class="font-bold text-sm">تسجيل الدخول</p>
+                </a>
+                <a href="pos.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">🛒</div>
+                    <p class="font-bold text-sm">شاشة البيع</p>
+                </a>
+                <a href="payment.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">💳</div>
+                    <p class="font-bold text-sm">الدفع</p>
+                </a>
+                <a href="Receipt.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">🧾</div>
+                    <p class="font-bold text-sm">الفاتورة</p>
+                </a>
+                <a href="Printer_Settings.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">🖨️</div>
+                    <p class="font-bold text-sm">إعدادات الطابعة</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Phase 2: Products -->
+        <div class="mb-6">
+            <h3 class="font-bold text-warning mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 bg-warning rounded-full"></span>
+                Phase 2: المنتجات والمخزون
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                <a href="Product_List.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-warning hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">📦</div>
+                    <p class="font-bold text-sm">قائمة المنتجات</p>
+                </a>
+                <a href="Product_Details.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-warning hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">📝</div>
+                    <p class="font-bold text-sm">تفاصيل المنتج</p>
+                </a>
+                <a href="Add_Product_Form.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-warning hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">➕</div>
+                    <p class="font-bold text-sm">إضافة منتج</p>
+                </a>
+                <a href="Inventory_List.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-warning hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">📊</div>
+                    <p class="font-bold text-sm">المخزون</p>
+                </a>
+                <a href="Inventory_Adjust.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-warning hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">±</div>
+                    <p class="font-bold text-sm">تعديل المخزون</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Phase 3: Purchases -->
+        <div class="mb-6">
+            <h3 class="font-bold text-secondary mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 bg-secondary rounded-full"></span>
+                Phase 3: المشتريات والموردين
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                <a href="Supplier_List.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-secondary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">🏭</div>
+                    <p class="font-bold text-sm">الموردين</p>
+                </a>
+                <a href="Add_Supplier.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-secondary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">➕</div>
+                    <p class="font-bold text-sm">إضافة مورد</p>
+                </a>
+                <a href="Add_Purchase.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-secondary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">📥</div>
+                    <p class="font-bold text-sm">فاتورة مشتريات</p>
+                </a>
+                <a href="Import_Purchase.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-purpleAI hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">📷</div>
+                    <p class="font-bold text-sm">استيراد AI</p>
+                </a>
+                <a href="Purchase_Review.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-purpleAI hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">✅</div>
+                    <p class="font-bold text-sm">مراجعة الفاتورة</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Phase 4: Customers & Debts -->
+        <div class="mb-6">
+            <h3 class="font-bold text-error mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 bg-error rounded-full"></span>
+                Phase 4: العملاء والديون
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-3">
+                <a href="Customer_List.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-error hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">👥</div>
+                    <p class="font-bold text-sm">العملاء</p>
+                </a>
+                <a href="Add_Customer.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-error hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">➕</div>
+                    <p class="font-bold text-sm">إضافة عميل</p>
+                </a>
+                <a href="Customer_Account.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-error hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">📋</div>
+                    <p class="font-bold text-sm">حساب العميل</p>
+                </a>
+                <a href="Customer_Payment.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-error hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">💰</div>
+                    <p class="font-bold text-sm">تسجيل دفعة</p>
+                </a>
+                <a href="Interest_Settings.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-error hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">%</div>
+                    <p class="font-bold text-sm">إعدادات الفوائد</p>
+                </a>
+                <a href="Close_Month.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-error hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">📅</div>
+                    <p class="font-bold text-sm">إقفال الشهر</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Phase 5: Orders -->
+        <div class="mb-6">
+            <h3 class="font-bold text-purpleAI mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 bg-purpleAI rounded-full"></span>
+                Phase 5: الطلبات
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                <a href="Order_List.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-purpleAI hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">📋</div>
+                    <p class="font-bold text-sm">قائمة الطلبات</p>
+                </a>
+                <a href="Order_Details.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-purpleAI hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">📝</div>
+                    <p class="font-bold text-sm">تفاصيل الطلب</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Phase 6: Reports -->
+        <div class="mb-6">
+            <h3 class="font-bold text-primary mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 bg-primary rounded-full"></span>
+                Phase 6: التقارير
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <a href="dashboard.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">📊</div>
+                    <p class="font-bold text-sm">لوحة التحكم</p>
+                </a>
+                <a href="Sales_Report.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">💰</div>
+                    <p class="font-bold text-sm">تقرير المبيعات</p>
+                </a>
+                <a href="Debt_Report.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">💳</div>
+                    <p class="font-bold text-sm">تقرير الديون</p>
+                </a>
+                <a href="Inventory_Report.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">📦</div>
+                    <p class="font-bold text-sm">تقرير المخزون</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Phase 7: Advanced -->
+        <div class="mb-6">
+            <h3 class="font-bold text-purpleAI mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 bg-purpleAI rounded-full"></span>
+                Phase 7: الميزات المتقدمة
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                <a href="operations.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-purpleAI hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">⚙️</div>
+                    <p class="font-bold text-sm">العمليات</p>
+                </a>
+                <a href="advanced.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-purpleAI hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">🤖</div>
+                    <p class="font-bold text-sm">المتقدمة / AI</p>
+                </a>
+                <a href="Driver_List.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-purpleAI hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">🚗</div>
+                    <p class="font-bold text-sm">المناديب</p>
+                </a>
+                <a href="Driver_Details.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-purpleAI hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">👤</div>
+                    <p class="font-bold text-sm">تفاصيل المندوب</p>
+                </a>
+                <a href="Smart_Order.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-purpleAI hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">🧠</div>
+                    <p class="font-bold text-sm">الطلب الذكي</p>
+                </a>
+                <a href="Promotions.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-gold hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">🏷️</div>
+                    <p class="font-bold text-sm">العروض</p>
+                </a>
+                <a href="Loyalty.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-gold hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">⭐</div>
+                    <p class="font-bold text-sm">نقاط الولاء</p>
+                </a>
+                <a href="WhatsApp_Settings.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">📱</div>
+                    <p class="font-bold text-sm">إعدادات واتساب</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Phase 7B: Settings & Operations -->
+        <div class="mb-6">
+            <h3 class="font-bold text-secondary mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 bg-secondary rounded-full"></span>
+                Phase 7B: الإعدادات والعمليات
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                <a href="General_Settings.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-secondary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">⚙️</div>
+                    <p class="font-bold text-sm">الإعدادات العامة</p>
+                </a>
+                <a href="Store_Settings.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-secondary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">🏪</div>
+                    <p class="font-bold text-sm">بيانات المتجر</p>
+                </a>
+                <a href="Payment_Devices.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-secondary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">💳</div>
+                    <p class="font-bold text-sm">أجهزة الدفع</p>
+                </a>
+                <a href="Returns.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-error hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">↩️</div>
+                    <p class="font-bold text-sm">المرتجعات</p>
+                </a>
+                <a href="Cash_Drawer.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-warning hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">🗃️</div>
+                    <p class="font-bold text-sm">الصندوق والوردية</p>
+                </a>
+                <a href="Product_Expiry.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-warning hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">📅</div>
+                    <p class="font-bold text-sm">صلاحية المنتجات</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Phase 8: Future Features -->
+        <div class="mb-6">
+            <h3 class="font-bold text-gray-500 mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 bg-gray-400 rounded-full"></span>
+                Phase 8: ميزات مستقبلية
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                <a href="User_Management.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-purpleAI hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">👥</div>
+                    <p class="font-bold text-sm">إدارة المستخدمين</p>
+                </a>
+                <a href="Backup_Settings.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">💾</div>
+                    <p class="font-bold text-sm">النسخ الاحتياطي</p>
+                </a>
+                <a href="Expenses.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-error hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">💸</div>
+                    <p class="font-bold text-sm">المصروفات</p>
+                </a>
+                <a href="Inventory_Count.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-secondary hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">📋</div>
+                    <p class="font-bold text-sm">جرد المخزون</p>
+                </a>
+                <a href="Cashier_Report.html"
+                    class="bg-surface p-4 rounded-xl border border-border hover:border-purpleAI hover:shadow-md transition-all text-center">
+                    <div class="text-2xl mb-2">👤</div>
+                    <p class="font-bold text-sm">أداء الكاشير</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-border py-4 mt-8">
+        <div class="max-w-7xl mx-auto px-6 text-center text-textSub text-sm">
+            <p>Smart Grocery POS System © 2026 | 47 شاشة متكاملة</p>
+        </div>
+    </footer>
+</body>
+
+</html>

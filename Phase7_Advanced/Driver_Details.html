@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Driver Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        purpleAI: '#7C3AED', textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>`r`n</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-purpleAI text-white rounded-lg flex items-center justify-center">🚗</div>
+            <span class="font-bold text-lg">تفاصيل المندوب</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span>عودة للمناديب</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <div class="flex items-center gap-4">
+                <div
+                    class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center font-bold text-xl text-gray-600">
+                    MA</div>
+                <div>
+                    <h1 class="text-xl font-bold">محمد علي</h1>
+                    <p class="text-sm text-textSub">مندوب توصيل • منذ 2024</p>
+                </div>
+                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">متاح للعمل</span>
+            </div>
+            <div class="flex gap-3">
+                <button class="px-4 py-2 border border-border rounded-lg text-textSub font-bold hover:bg-gray-50">تعديل
+                    البيانات</button>
+                <button class="px-4 py-2 bg-error/10 text-error border border-error/20 rounded-lg font-bold">تعطيل
+                    الحساب</button>
+            </div>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-6">
+            <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Stats Cards -->
+                <div class="lg:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-surface p-4 rounded-xl border border-border shadow-sm text-center">
+                        <p class="text-xs text-textSub font-bold">طلبات اليوم</p>
+                        <p class="text-3xl font-bold font-roboto text-primary">12</p>
+                    </div>
+                    <div class="bg-surface p-4 rounded-xl border border-border shadow-sm text-center">
+                        <p class="text-xs text-textSub font-bold">متوسط الوقت</p>
+                        <p class="text-3xl font-bold font-roboto">25 <span class="text-sm">د</span></p>
+                    </div>
+                    <div class="bg-surface p-4 rounded-xl border border-border shadow-sm text-center">
+                        <p class="text-xs text-textSub font-bold">طلبات الشهر</p>
+                        <p class="text-3xl font-bold font-roboto">248</p>
+                    </div>
+                    <div class="bg-surface p-4 rounded-xl border border-yellow-200 shadow-sm text-center bg-yellow-50">
+                        <p class="text-xs text-textSub font-bold">التقييم</p>
+                        <p class="text-3xl font-bold font-roboto text-yellow-600">4.8 ★</p>
+                    </div>
+                </div>
+
+                <!-- Driver Info -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-4 border-b border-gray-100 pb-2">آخر الطلبات</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-roboto font-bold">#2045</span>
+                                    <span class="text-sm text-textSub">حي النسيم</span>
+                                </div>
+                                <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">تم
+                                    التوصيل</span>
+                                <span class="text-xs text-textSub font-roboto">15 دقيقة</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-roboto font-bold">#2044</span>
+                                    <span class="text-sm text-textSub">حي الربوة</span>
+                                </div>
+                                <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">تم
+                                    التوصيل</span>
+                                <span class="text-xs text-textSub font-roboto">22 دقيقة</span>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-roboto font-bold">#2046</span>
+                                    <span class="text-sm text-textSub">حي السلام</span>
+                                </div>
+                                <span
+                                    class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-bold animate-pulse">في
+                                    الطريق</span>
+                                <span class="text-xs text-textSub font-roboto">10 دقائق</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-4">التقييمات الأخيرة</h3>
+                        <div class="space-y-4">
+                            <div class="border-b border-gray-100 pb-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-yellow-400">★★★★★</span>
+                                    <span class="text-sm text-textSub font-roboto">منذ ساعة</span>
+                                </div>
+                                <p class="text-sm text-textMain">"توصيل سريع وممتاز، شكراً"</p>
+                            </div>
+                            <div class="border-b border-gray-100 pb-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-yellow-400">★★★★★</span>
+                                    <span class="text-sm text-textSub font-roboto">منذ 3 ساعات</span>
+                                </div>
+                                <p class="text-sm text-textMain">"أفضل مندوب"</p>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-yellow-400">★★★★☆</span>
+                                    <span class="text-sm text-textSub font-roboto">أمس</span>
+                                </div>
+                                <p class="text-sm text-textMain">"جيد"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact & Location -->
+                <div class="space-y-6">
+                    <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-4">معلومات التواصل</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">📱
+                                </div>
+                                <div>
+                                    <p class="text-xs text-textSub">الجوال</p>
+                                    <p class="font-roboto font-bold">055 123 4567</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">🚗
+                                </div>
+                                <div>
+                                    <p class="text-xs text-textSub">المركبة</p>
+                                    <p class="font-bold">هيونداي أكسنت - أبيض</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">🆔
+                                </div>
+                                <div>
+                                    <p class="text-xs text-textSub">رقم الهوية</p>
+                                    <p class="font-roboto font-bold">***4567</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-4">الموقع الحالي</h3>
+                        <div
+                            class="h-40 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200">
+                            <div class="text-center text-gray-400">
+                                <div
+                                    class="w-8 h-8 bg-primary rounded-full mx-auto mb-2 flex items-center justify-center text-white">
+                                    📍</div>
+                                <p class="text-xs">خريطة الموقع</p>
+                                <p class="text-[10px]">حي السلام - الرياض</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-textSub mt-2 text-center">آخر تحديث: قبل 2 دقيقة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

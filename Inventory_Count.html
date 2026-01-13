@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Inventory Count</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-secondary text-white rounded-lg flex items-center justify-center font-bold">📋</div>
+            <span class="font-bold text-lg">الجرد</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">🏠
+                الرئيسية</a>
+            <a href="Inventory_List.html"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">📦 المخزون</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-secondary/10 text-secondary rounded-xl font-bold">📋
+                الجرد</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <div class="flex items-center gap-3">
+                <h1 class="text-xl font-bold">جرد المخزون</h1>
+                <span class="bg-blue-100 text-secondary px-3 py-1 rounded-full text-xs font-bold">جرد جارٍ</span>
+            </div>
+            <div class="flex gap-3">
+                <button class="px-4 py-2 border border-border rounded-lg font-bold hover:bg-gray-50">إلغاء
+                    الجرد</button>
+                <button class="px-4 py-2 bg-primary text-white rounded-lg font-bold hover:bg-green-600">حفظ
+                    وإغلاق</button>
+            </div>
+        </header>
+
+        <!-- Progress -->
+        <div class="px-6 py-4 bg-surface border-b shrink-0">
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-bold">تقدم الجرد</span>
+                <span class="font-roboto font-bold">156 / 1,245 منتج</span>
+            </div>
+            <div class="bg-gray-200 rounded-full h-3">
+                <div class="bg-secondary h-3 rounded-full transition-all" style="width: 12.5%"></div>
+            </div>
+        </div>
+
+        <div class="flex-1 flex gap-6 p-6 overflow-hidden">
+            <!-- Scan Input -->
+            <div class="w-1/3 flex flex-col gap-4">
+                <div class="bg-surface rounded-xl border border-border p-4 shadow-sm">
+                    <h3 class="font-bold mb-3">مسح الباركود</h3>
+                    <input type="text" placeholder="امسح الباركود أو ابحث..."
+                        class="w-full h-14 px-4 rounded-lg border-2 border-secondary text-lg font-roboto text-center"
+                        autofocus>
+                </div>
+
+                <!-- Current Product -->
+                <div class="bg-blue-50 rounded-xl border border-blue-200 p-4 flex-1">
+                    <h3 class="font-bold mb-3">المنتج الحالي</h3>
+                    <div class="text-center">
+                        <div class="text-5xl mb-3">🥛</div>
+                        <h4 class="font-bold text-lg">حليب المراعي 2 لتر</h4>
+                        <p class="text-sm text-textSub font-roboto mb-4">6281007001234</p>
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-white p-3 rounded-lg">
+                                <p class="text-xs text-textSub">الكمية بالنظام</p>
+                                <p class="text-2xl font-bold font-roboto text-secondary">45</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <p class="text-xs text-textSub">الكمية الفعلية</p>
+                                <input type="number" value="45"
+                                    class="w-full text-2xl font-bold font-roboto text-center text-primary border-0 bg-transparent">
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 h-12 bg-primary text-white rounded-lg font-bold">✓ تأكيد
+                            والتالي</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Counted Items -->
+            <div class="flex-1 bg-surface rounded-xl border border-border shadow-sm overflow-hidden flex flex-col">
+                <div class="px-4 py-3 border-b border-border flex justify-between items-center">
+                    <h3 class="font-bold">المنتجات المجرودة</h3>
+                    <span class="text-sm text-textSub">156 منتج</span>
+                </div>
+                <div class="flex-1 overflow-y-auto">
+                    <table class="w-full text-right text-sm">
+                        <thead class="bg-gray-50 sticky top-0">
+                            <tr class="text-xs text-textSub uppercase font-bold">
+                                <th class="px-4 py-3">المنتج</th>
+                                <th class="px-4 py-3">النظام</th>
+                                <th class="px-4 py-3">الفعلي</th>
+                                <th class="px-4 py-3">الفرق</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-border">
+                            <tr class="bg-green-50/50">
+                                <td class="px-4 py-3">خبز توست</td>
+                                <td class="px-4 py-3 font-roboto">30</td>
+                                <td class="px-4 py-3 font-roboto">30</td>
+                                <td class="px-4 py-3 font-roboto text-green-600">✓ 0</td>
+                            </tr>
+                            <tr class="bg-red-50/50">
+                                <td class="px-4 py-3">جبنة كرافت</td>
+                                <td class="px-4 py-3 font-roboto">25</td>
+                                <td class="px-4 py-3 font-roboto">22</td>
+                                <td class="px-4 py-3 font-roboto text-error font-bold">-3</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3">مياه نوفا</td>
+                                <td class="px-4 py-3 font-roboto">100</td>
+                                <td class="px-4 py-3 font-roboto">102</td>
+                                <td class="px-4 py-3 font-roboto text-secondary">+2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

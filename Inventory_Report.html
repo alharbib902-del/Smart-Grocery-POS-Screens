@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Inventory Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>`r`n</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-warning text-white rounded-lg flex items-center justify-center font-bold">📦</div>
+            <span class="font-bold text-lg">التقارير</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">تقرير
+                المبيعات</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">تقرير
+                الديون</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-warning/10 text-warning rounded-xl font-bold">تقرير
+                المخزون</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <h1 class="text-xl font-bold">تقرير المخزون والجرد</h1>
+            <div class="flex gap-3">
+                <button class="px-4 py-2 border border-border rounded-lg font-bold hover:bg-gray-50">📥 تصدير
+                    PDF</button>
+                <button class="px-4 py-2 bg-warning text-white rounded-lg font-bold hover:bg-orange-600">🔄 جرد
+                    جديد</button>
+            </div>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-6">
+            <div class="max-w-5xl mx-auto space-y-6">
+                <!-- Summary -->
+                <div class="grid grid-cols-4 gap-4">
+                    <div class="bg-surface p-5 rounded-xl border border-border shadow-sm">
+                        <p class="text-xs text-textSub font-bold mb-1">إجمالي الأصناف</p>
+                        <p class="text-2xl font-bold font-roboto">1,245</p>
+                    </div>
+                    <div class="bg-surface p-5 rounded-xl border border-border shadow-sm">
+                        <p class="text-xs text-textSub font-bold mb-1">قيمة المخزون</p>
+                        <p class="text-2xl font-bold font-roboto text-secondary">125,450 SAR</p>
+                    </div>
+                    <div class="bg-red-50 p-5 rounded-xl border border-red-200 shadow-sm">
+                        <p class="text-xs text-error font-bold mb-1">مخزون منخفض</p>
+                        <p class="text-2xl font-bold font-roboto text-error">23</p>
+                    </div>
+                    <div class="bg-surface p-5 rounded-xl border border-border shadow-sm">
+                        <p class="text-xs text-textSub font-bold mb-1">نفاذ مخزون</p>
+                        <p class="text-2xl font-bold font-roboto">5</p>
+                    </div>
+                </div>
+
+                <!-- Category Breakdown -->
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h3 class="font-bold text-lg mb-4">توزيع المخزون حسب الفئة</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-4">
+                            <span class="w-24">ألبان وأجبان</span>
+                            <div class="flex-1 bg-gray-100 rounded-full h-4">
+                                <div class="bg-blue-500 h-4 rounded-full" style="width: 35%"></div>
+                            </div>
+                            <span class="font-roboto font-bold w-20 text-left">43,900 SAR</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-24">مشروبات</span>
+                            <div class="flex-1 bg-gray-100 rounded-full h-4">
+                                <div class="bg-green-500 h-4 rounded-full" style="width: 25%"></div>
+                            </div>
+                            <span class="font-roboto font-bold w-20 text-left">31,360 SAR</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-24">معلبات</span>
+                            <div class="flex-1 bg-gray-100 rounded-full h-4">
+                                <div class="bg-yellow-500 h-4 rounded-full" style="width: 20%"></div>
+                            </div>
+                            <span class="font-roboto font-bold w-20 text-left">25,090 SAR</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-24">أخرى</span>
+                            <div class="flex-1 bg-gray-100 rounded-full h-4">
+                                <div class="bg-gray-400 h-4 rounded-full" style="width: 20%"></div>
+                            </div>
+                            <span class="font-roboto font-bold w-20 text-left">25,100 SAR</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stock Alerts -->
+                <div class="bg-red-50 rounded-xl border border-red-200 p-6">
+                    <h3 class="font-bold text-lg mb-4 text-error">⚠️ تنبيهات المخزون</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-3 rounded-lg border border-red-100">
+                            <p class="font-bold">حليب المراعي 2 لتر</p>
+                            <p class="text-xs text-error">المتبقي: 5 (الحد الأدنى: 20)</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-red-100">
+                            <p class="font-bold">جبنة كرافت</p>
+                            <p class="text-xs text-error">المتبقي: 3 (الحد الأدنى: 10)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

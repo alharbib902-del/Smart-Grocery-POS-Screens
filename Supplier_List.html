@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Supplier List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>`r`n</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-secondary text-white rounded-lg flex items-center justify-center font-bold">M</div>
+            <span class="font-bold text-lg">الموردين</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span>عودة للرئيسية</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-secondary/10 text-secondary rounded-xl font-bold">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                <span>قائمة الموردين</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <h1 class="text-xl font-bold">إدارة الموردين</h1>
+            <div class="flex gap-3">
+                <input type="text" placeholder="بحث..."
+                    class="h-10 w-48 px-4 rounded-lg border border-border focus:border-primary outline-none text-sm">
+                <button
+                    class="px-4 py-2 bg-secondary text-white rounded-lg font-bold hover:bg-blue-600 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                    إضافة مورد
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats -->
+        <div class="px-6 py-4 grid grid-cols-3 gap-4 shrink-0">
+            <div class="bg-surface p-4 rounded-xl border border-border shadow-sm">
+                <p class="text-xs text-textSub font-bold">إجمالي الموردين</p>
+                <p class="text-2xl font-bold font-roboto">12</p>
+            </div>
+            <div class="bg-surface p-4 rounded-xl border border-border shadow-sm">
+                <p class="text-xs text-textSub font-bold">فواتير معلقة</p>
+                <p class="text-2xl font-bold font-roboto text-warning">3</p>
+            </div>
+            <div class="bg-surface p-4 rounded-xl border border-red-200 bg-red-50 shadow-sm">
+                <p class="text-xs text-error font-bold">مستحقات للموردين</p>
+                <p class="text-2xl font-bold font-roboto text-error">15,250 SAR</p>
+            </div>
+        </div>
+
+        <!-- List -->
+        <div class="flex-1 px-6 pb-6 overflow-y-auto">
+            <div class="bg-surface rounded-xl border border-border overflow-hidden shadow-sm">
+                <table class="w-full text-right">
+                    <thead class="bg-gray-50 border-b text-xs text-textSub uppercase font-bold">
+                        <tr>
+                            <th class="px-6 py-4">المورد</th>
+                            <th class="px-6 py-4">جهة الاتصال</th>
+                            <th class="px-6 py-4">الرصيد المستحق</th>
+                            <th class="px-6 py-4">آخر توريد</th>
+                            <th class="px-6 py-4">إجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-border text-sm">
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-lg">
+                                        🏭</div>
+                                    <div>
+                                        <p class="font-bold">شركة المراعي</p>
+                                        <p class="text-xs text-textSub">ألبان وعصائر</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <p class="font-roboto">011 234 5678</p>
+                                <p class="text-xs text-textSub">أحمد - مندوب المبيعات</p>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="font-roboto font-bold text-error">8,500 SAR</span>
+                            </td>
+                            <td class="px-6 py-4 font-roboto text-textSub">2026-01-10</td>
+                            <td class="px-6 py-4">
+                                <div class="flex gap-2">
+                                    <button
+                                        class="px-3 py-1 bg-secondary/10 text-secondary rounded text-xs font-bold">تفاصيل</button>
+                                    <button
+                                        class="px-3 py-1 bg-primary/10 text-primary rounded text-xs font-bold">فاتورة</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-lg">
+                                        🍞</div>
+                                    <div>
+                                        <p class="font-bold">مخابز الريف</p>
+                                        <p class="text-xs text-textSub">مخبوزات طازجة</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <p class="font-roboto">055 987 6543</p>
+                                <p class="text-xs text-textSub">خالد - صاحب المخبز</p>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="font-roboto font-bold text-green-600">0 SAR</span>
+                            </td>
+                            <td class="px-6 py-4 font-roboto text-textSub">2026-01-13</td>
+                            <td class="px-6 py-4">
+                                <div class="flex gap-2">
+                                    <button
+                                        class="px-3 py-1 bg-secondary/10 text-secondary rounded text-xs font-bold">تفاصيل</button>
+                                    <button
+                                        class="px-3 py-1 bg-primary/10 text-primary rounded text-xs font-bold">فاتورة</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

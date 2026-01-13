@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Order Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>`r`n</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-secondary text-white rounded-lg flex items-center justify-center font-bold">#</div>
+            <span class="font-bold text-lg">تفاصيل الطلب</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span>عودة للطلبات</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <div class="flex items-center gap-4">
+                <h1 class="text-xl font-bold font-roboto">#1023</h1>
+                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">مدفوع ✓</span>
+                <span class="text-sm text-textSub font-roboto">13 يناير 2026 - 10:30 PM</span>
+            </div>
+            <div class="flex gap-3">
+                <button
+                    class="px-4 py-2 border border-border rounded-lg text-textSub font-bold hover:bg-gray-50 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                    طباعة
+                </button>
+                <button
+                    class="px-4 py-2 bg-error/10 text-error border border-error/20 rounded-lg font-bold hover:bg-error/20">
+                    إرجاع الطلب
+                </button>
+            </div>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-6">
+            <div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Order Info -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-4 border-b border-gray-100 pb-2">المنتجات</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-xl">
+                                    🥛</div>
+                                <div class="flex-1">
+                                    <p class="font-bold">حليب المراعي 2 لتر</p>
+                                    <p class="text-xs text-textSub">الألبان</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="font-roboto font-bold">2</p>
+                                    <p class="text-xs text-textSub">الكمية</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="font-roboto">9.50</p>
+                                    <p class="text-xs text-textSub">السعر</p>
+                                </div>
+                                <div class="text-left w-20">
+                                    <p class="font-roboto font-bold">19.00</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-xl">
+                                    🍞</div>
+                                <div class="flex-1">
+                                    <p class="font-bold">خبز توست أبيض</p>
+                                    <p class="text-xs text-textSub">المخابز</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="font-roboto font-bold">1</p>
+                                    <p class="text-xs text-textSub">الكمية</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="font-roboto">5.00</p>
+                                </div>
+                                <div class="text-left w-20">
+                                    <p class="font-roboto font-bold">5.00</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-xl">
+                                    🧀</div>
+                                <div class="flex-1">
+                                    <p class="font-bold">جبنة كرافت شيدر</p>
+                                    <p class="text-xs text-textSub">الألبان</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="font-roboto font-bold">3</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="font-roboto">18.50</p>
+                                </div>
+                                <div class="text-left w-20">
+                                    <p class="font-roboto font-bold">55.50</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline -->
+                    <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-4">سجل الحالة</h3>
+                        <div class="relative pr-6 border-r-2 border-gray-200 space-y-4">
+                            <div class="relative">
+                                <div
+                                    class="absolute -right-[25px] w-4 h-4 bg-green-500 rounded-full border-4 border-white shadow">
+                                </div>
+                                <p class="font-bold text-sm">مدفوع</p>
+                                <p class="text-xs text-textSub">10:30 PM - نقد • المتبقي: 28.45 SAR</p>
+                            </div>
+                            <div class="relative">
+                                <div
+                                    class="absolute -right-[25px] w-4 h-4 bg-blue-500 rounded-full border-4 border-white shadow">
+                                </div>
+                                <p class="font-bold text-sm">تم إنشاء الطلب</p>
+                                <p class="text-xs text-textSub">10:25 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side Info -->
+                <div class="space-y-6">
+                    <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-4">العميل</h3>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center font-bold text-gray-600">
+                                WI</div>
+                            <div>
+                                <p class="font-bold">عميل عام</p>
+                                <p class="text-xs text-textSub">Walk-in Guest</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-4">ملخص الدفع</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-textSub">المجموع الفرعي</span>
+                                <span class="font-roboto">79.50</span>
+                            </div>
+                            <div class="flex justify-between text-error">
+                                <span>خصم (10%)</span>
+                                <span class="font-roboto">-7.95</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-textSub">الضريبة (15%)</span>
+                                <span class="font-roboto">10.73</span>
+                            </div>
+                            <div class="flex justify-between border-t pt-2 font-bold text-lg">
+                                <span>الإجمالي</span>
+                                <span class="font-roboto text-primary">71.55 SAR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-4">طريقة الدفع</h3>
+                        <div class="flex items-center gap-3 bg-green-50 p-3 rounded-lg border border-green-100">
+                            <span class="text-2xl">💵</span>
+                            <div>
+                                <p class="font-bold text-green-700">نقد (Cash)</p>
+                                <p class="text-xs text-green-600">المستلم: 100 SAR • المتبقي: 28.45</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

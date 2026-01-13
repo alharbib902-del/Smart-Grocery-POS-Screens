@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Payment Devices</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo h-screen w-screen flex overflow-hidden">
+    <aside class="w-64 bg-surface border-l border-border flex flex-col hidden md:flex shadow-sm shrink-0">
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-border">
+            <div class="w-8 h-8 bg-secondary text-white rounded-lg flex items-center justify-center font-bold">💳</div>
+            <span class="font-bold text-lg">أجهزة الدفع</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">🏠
+                الرئيسية</a>
+            <a href="General_Settings.html"
+                class="flex items-center gap-3 px-4 py-3 text-textSub hover:bg-gray-50 rounded-xl">⚙️ الإعدادات</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-secondary/10 text-secondary rounded-xl font-bold">💳
+                أجهزة الدفع</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <header class="h-16 bg-surface border-b border-border flex items-center justify-between px-6 shrink-0">
+            <h1 class="text-xl font-bold">إعدادات أجهزة الدفع</h1>
+            <button
+                class="px-4 py-2 bg-secondary text-white rounded-lg font-bold hover:bg-blue-600 flex items-center gap-2">
+                ➕ إضافة جهاز
+            </button>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-6">
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- Connected Devices -->
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h2 class="font-bold text-lg mb-4">الأجهزة المتصلة</h2>
+                    <div class="space-y-4">
+                        <!-- Device 1 - Active -->
+                        <div class="flex items-center gap-4 p-4 bg-green-50 border border-green-200 rounded-xl">
+                            <div
+                                class="w-16 h-16 bg-white rounded-lg flex items-center justify-center text-3xl shadow-sm">
+                                💳</div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2">
+                                    <h3 class="font-bold">جهاز مدى - الكاشير 1</h3>
+                                    <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold">متصل
+                                        ✓</span>
+                                </div>
+                                <p class="text-sm text-textSub font-roboto">Terminal ID: 12345678</p>
+                                <p class="text-sm text-textSub">النوع: Ingenico DX8000</p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button
+                                    class="px-4 py-2 border border-border rounded-lg text-sm font-bold hover:bg-gray-50">اختبار</button>
+                                <button
+                                    class="px-4 py-2 border border-border rounded-lg text-sm font-bold hover:bg-gray-50">إعدادات</button>
+                            </div>
+                        </div>
+
+                        <!-- Device 2 - Disconnected -->
+                        <div
+                            class="flex items-center gap-4 p-4 bg-gray-50 border border-gray-200 rounded-xl opacity-60">
+                            <div
+                                class="w-16 h-16 bg-white rounded-lg flex items-center justify-center text-3xl shadow-sm">
+                                💳</div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2">
+                                    <h3 class="font-bold">جهاز مدى - الكاشير 2</h3>
+                                    <span class="bg-gray-200 text-gray-600 px-2 py-0.5 rounded text-xs font-bold">غير
+                                        متصل</span>
+                                </div>
+                                <p class="text-sm text-textSub font-roboto">Terminal ID: 87654321</p>
+                                <p class="text-sm text-textSub">النوع: Verifone VX520</p>
+                            </div>
+                            <button class="px-4 py-2 bg-secondary text-white rounded-lg text-sm font-bold">إعادة
+                                الاتصال</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+                    <h2 class="font-bold text-lg mb-4">طرق الدفع المفعلة</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">💵</span>
+                                <span class="font-bold">نقداً (كاش)</span>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div
+                                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-primary peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">💳</span>
+                                <span class="font-bold">مدى / بطاقة</span>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div
+                                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-primary peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">📱</span>
+                                <span class="font-bold">Apple Pay</span>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div
+                                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-primary peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">📝</span>
+                                <span class="font-bold">آجل (دين)</span>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div
+                                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-primary peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
