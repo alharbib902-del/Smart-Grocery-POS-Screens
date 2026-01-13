@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Loyalty Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800', gold: '#F59E0B',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo min-h-screen">
+    <header
+        class="bg-gradient-to-l from-yellow-500 to-yellow-600 text-white px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <a href="Loyalty.html" class="text-white/80 hover:text-white">→</a>
+            <h1 class="text-xl font-bold">نقاط العميل</h1>
+        </div>
+        <button class="px-4 py-2 bg-white/20 rounded-lg font-bold hover:bg-white/30">استبدال النقاط</button>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6 space-y-6">
+        <!-- Customer & Points Summary -->
+        <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+            <div class="flex items-center gap-6">
+                <div
+                    class="w-20 h-20 bg-gold text-white rounded-full flex items-center justify-center text-3xl font-bold">
+                    AH</div>
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold">أحمد حسن</h2>
+                    <p class="text-textSub font-roboto">0551234567</p>
+                    <p class="text-xs text-gold font-bold mt-1">⭐ عضو ذهبي</p>
+                </div>
+                <div class="text-center bg-yellow-50 px-8 py-4 rounded-xl border-2 border-gold">
+                    <p class="text-xs text-textSub font-bold">الرصيد الحالي</p>
+                    <p class="text-4xl font-bold font-roboto text-gold">2,450</p>
+                    <p class="text-xs text-textSub">نقطة</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-4">
+            <div class="bg-surface p-4 rounded-xl border border-border shadow-sm text-center">
+                <p class="text-xs text-textSub font-bold">إجمالي المكتسب</p>
+                <p class="text-2xl font-bold font-roboto text-primary">5,230</p>
+            </div>
+            <div class="bg-surface p-4 rounded-xl border border-border shadow-sm text-center">
+                <p class="text-xs text-textSub font-bold">تم الاستبدال</p>
+                <p class="text-2xl font-bold font-roboto text-error">2,780</p>
+            </div>
+            <div class="bg-surface p-4 rounded-xl border border-border shadow-sm text-center">
+                <p class="text-xs text-textSub font-bold">تنتهي قريباً</p>
+                <p class="text-2xl font-bold font-roboto text-warning">150</p>
+            </div>
+        </div>
+
+        <!-- Transaction History -->
+        <div class="bg-surface rounded-xl border border-border shadow-sm overflow-hidden">
+            <div class="px-6 py-4 border-b border-border">
+                <h3 class="font-bold">سجل المعاملات</h3>
+            </div>
+            <table class="w-full text-right text-sm">
+                <thead class="bg-gray-50 text-xs text-textSub uppercase font-bold">
+                    <tr>
+                        <th class="px-6 py-3">التاريخ</th>
+                        <th class="px-6 py-3">النوع</th>
+                        <th class="px-6 py-3">الوصف</th>
+                        <th class="px-6 py-3">النقاط</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 font-roboto">2026-01-13</td>
+                        <td class="px-6 py-4"><span
+                                class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">اكتساب</span></td>
+                        <td class="px-6 py-4">مشتريات فاتورة #1025</td>
+                        <td class="px-6 py-4 font-roboto font-bold text-primary">+45</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 font-roboto">2026-01-10</td>
+                        <td class="px-6 py-4"><span
+                                class="bg-red-100 text-error px-2 py-1 rounded text-xs">استبدال</span></td>
+                        <td class="px-6 py-4">خصم 50 ريال على الفاتورة</td>
+                        <td class="px-6 py-4 font-roboto font-bold text-error">-500</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 font-roboto">2026-01-08</td>
+                        <td class="px-6 py-4"><span
+                                class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">اكتساب</span></td>
+                        <td class="px-6 py-4">مشتريات فاتورة #1018</td>
+                        <td class="px-6 py-4 font-roboto font-bold text-primary">+120</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

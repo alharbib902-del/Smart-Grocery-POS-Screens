@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Top Products</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800', gold: '#F59E0B',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo min-h-screen">
+    <header class="bg-surface border-b border-border px-6 py-4 flex items-center justify-between">
+        <h1 class="text-xl font-bold">🏆 الأصناف الأكثر مبيعاً</h1>
+        <div class="flex gap-3">
+            <select class="h-10 px-4 rounded-lg border border-border">
+                <option>هذا الأسبوع</option>
+                <option>هذا الشهر</option>
+                <option>آخر 3 أشهر</option>
+            </select>
+            <button class="px-4 py-2 border border-border rounded-lg font-bold">📥 تصدير</button>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6 space-y-6">
+        <!-- Top 3 Podium -->
+        <div class="grid grid-cols-3 gap-4 items-end">
+            <div class="bg-surface rounded-xl border border-border p-4 text-center shadow-sm order-1">
+                <div class="text-4xl mb-2">🥈</div>
+                <div class="text-3xl mb-2">🍞</div>
+                <h3 class="font-bold text-sm">خبز توست</h3>
+                <p class="text-2xl font-bold font-roboto text-secondary">450</p>
+                <p class="text-xs text-textSub">وحدة</p>
+            </div>
+            <div
+                class="bg-gradient-to-b from-yellow-50 to-yellow-100 rounded-xl border-2 border-gold p-6 text-center shadow-md order-0">
+                <div class="text-5xl mb-2">🥇</div>
+                <div class="text-4xl mb-2">🥛</div>
+                <h3 class="font-bold">حليب المراعي</h3>
+                <p class="text-3xl font-bold font-roboto text-gold">620</p>
+                <p class="text-xs text-textSub">وحدة</p>
+            </div>
+            <div class="bg-surface rounded-xl border border-border p-4 text-center shadow-sm order-2">
+                <div class="text-4xl mb-2">🥉</div>
+                <div class="text-3xl mb-2">🥤</div>
+                <h3 class="font-bold text-sm">بيبسي</h3>
+                <p class="text-2xl font-bold font-roboto text-warning">380</p>
+                <p class="text-xs text-textSub">وحدة</p>
+            </div>
+        </div>
+
+        <!-- Full List -->
+        <div class="bg-surface rounded-xl border border-border shadow-sm overflow-hidden">
+            <div class="px-6 py-4 border-b border-border">
+                <h3 class="font-bold">قائمة الأكثر مبيعاً (Top 10)</h3>
+            </div>
+            <table class="w-full text-right text-sm">
+                <thead class="bg-gray-50 text-xs text-textSub uppercase font-bold">
+                    <tr>
+                        <th class="px-6 py-3">#</th>
+                        <th class="px-6 py-3">المنتج</th>
+                        <th class="px-6 py-3">الكمية المباعة</th>
+                        <th class="px-6 py-3">الإيرادات</th>
+                        <th class="px-6 py-3">التغيير</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-3 font-bold text-gold">1</td>
+                        <td class="px-6 py-3">🥛 حليب المراعي</td>
+                        <td class="px-6 py-3 font-roboto">620</td>
+                        <td class="px-6 py-3 font-roboto font-bold">5,890 SAR</td>
+                        <td class="px-6 py-3 text-primary font-roboto">↑ 12%</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-3 font-bold text-gray-400">2</td>
+                        <td class="px-6 py-3">🍞 خبز توست</td>
+                        <td class="px-6 py-3 font-roboto">450</td>
+                        <td class="px-6 py-3 font-roboto font-bold">2,475 SAR</td>
+                        <td class="px-6 py-3 text-primary font-roboto">↑ 8%</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-3 font-bold text-yellow-600">3</td>
+                        <td class="px-6 py-3">🥤 بيبسي</td>
+                        <td class="px-6 py-3 font-roboto">380</td>
+                        <td class="px-6 py-3 font-roboto font-bold">2,850 SAR</td>
+                        <td class="px-6 py-3 text-error font-roboto">↓ 3%</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-3">4</td>
+                        <td class="px-6 py-3">🧀 جبنة كرافت</td>
+                        <td class="px-6 py-3 font-roboto">290</td>
+                        <td class="px-6 py-3 font-roboto font-bold">5,365 SAR</td>
+                        <td class="px-6 py-3 text-primary font-roboto">↑ 5%</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-3">5</td>
+                        <td class="px-6 py-3">🥚 بيض طازج</td>
+                        <td class="px-6 py-3 font-roboto">250</td>
+                        <td class="px-6 py-3 font-roboto font-bold">3,750 SAR</td>
+                        <td class="px-6 py-3 text-textSub font-roboto">— 0%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

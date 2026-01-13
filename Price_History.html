@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Price History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo min-h-screen">
+    <header class="bg-surface border-b border-border px-6 py-4 flex items-center justify-between">
+        <h1 class="text-xl font-bold">سجل تغييرات الأسعار</h1>
+        <div class="flex gap-3">
+            <input type="text" placeholder="🔍 بحث عن منتج..." class="h-10 px-4 w-64 rounded-lg border border-border">
+            <input type="date" class="h-10 px-4 rounded-lg border border-border font-roboto">
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto p-6">
+        <div class="bg-surface rounded-xl border border-border shadow-sm overflow-hidden">
+            <table class="w-full text-right">
+                <thead class="bg-gray-50 border-b text-xs text-textSub uppercase font-bold">
+                    <tr>
+                        <th class="px-6 py-4">المنتج</th>
+                        <th class="px-6 py-4">السعر القديم</th>
+                        <th class="px-6 py-4">السعر الجديد</th>
+                        <th class="px-6 py-4">التغيير</th>
+                        <th class="px-6 py-4">التاريخ</th>
+                        <th class="px-6 py-4">بواسطة</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-border text-sm">
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2"><span>🥛</span><span class="font-bold">حليب المراعي 2
+                                    لتر</span></div>
+                        </td>
+                        <td class="px-6 py-4 font-roboto text-textSub line-through">8.50 SAR</td>
+                        <td class="px-6 py-4 font-roboto font-bold">9.50 SAR</td>
+                        <td class="px-6 py-4"><span class="text-error font-bold font-roboto">↑ +11.8%</span></td>
+                        <td class="px-6 py-4 font-roboto">2026-01-14</td>
+                        <td class="px-6 py-4">أحمد</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2"><span>🍞</span><span class="font-bold">خبز توست</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-roboto text-textSub line-through">6.00 SAR</td>
+                        <td class="px-6 py-4 font-roboto font-bold">5.50 SAR</td>
+                        <td class="px-6 py-4"><span class="text-primary font-bold font-roboto">↓ -8.3%</span></td>
+                        <td class="px-6 py-4 font-roboto">2026-01-13</td>
+                        <td class="px-6 py-4">محمد</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2"><span>🧀</span><span class="font-bold">جبنة
+                                    كرافت</span></div>
+                        </td>
+                        <td class="px-6 py-4 font-roboto text-textSub line-through">17.00 SAR</td>
+                        <td class="px-6 py-4 font-roboto font-bold">18.50 SAR</td>
+                        <td class="px-6 py-4"><span class="text-error font-bold font-roboto">↑ +8.8%</span></td>
+                        <td class="px-6 py-4 font-roboto">2026-01-12</td>
+                        <td class="px-6 py-4">باسم</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2"><span>🥤</span><span class="font-bold">بيبسي 2.25
+                                    لتر</span></div>
+                        </td>
+                        <td class="px-6 py-4 font-roboto text-textSub line-through">7.50 SAR</td>
+                        <td class="px-6 py-4 font-roboto font-bold">7.50 SAR</td>
+                        <td class="px-6 py-4"><span class="text-textSub font-roboto">— 0%</span></td>
+                        <td class="px-6 py-4 font-roboto">2026-01-10</td>
+                        <td class="px-6 py-4">النظام</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

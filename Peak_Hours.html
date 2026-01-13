@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Peak Hours</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo min-h-screen">
+    <header class="bg-surface border-b border-border px-6 py-4 flex items-center justify-between">
+        <h1 class="text-xl font-bold">⏰ تقرير ساعات الذروة</h1>
+        <select class="h-10 px-4 rounded-lg border border-border">
+            <option>آخر 7 أيام</option>
+            <option>هذا الشهر</option>
+        </select>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6 space-y-6">
+        <!-- Peak Hour Summary -->
+        <div class="grid grid-cols-3 gap-4">
+            <div class="bg-red-50 border border-red-200 rounded-xl p-4 text-center shadow-sm">
+                <p class="text-xs text-error font-bold">ساعة الذروة</p>
+                <p class="text-3xl font-bold font-roboto text-error">6-7 PM</p>
+                <p class="text-sm text-textSub">85 فاتورة/ساعة</p>
+            </div>
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-center shadow-sm">
+                <p class="text-xs text-secondary font-bold">إجمالي الفواتير</p>
+                <p class="text-3xl font-bold font-roboto text-secondary">342</p>
+                <p class="text-sm text-textSub">هذا الأسبوع</p>
+            </div>
+            <div class="bg-green-50 border border-green-200 rounded-xl p-4 text-center shadow-sm">
+                <p class="text-xs text-primary font-bold">متوسط يومي</p>
+                <p class="text-3xl font-bold font-roboto text-primary">49</p>
+                <p class="text-sm text-textSub">فاتورة/يوم</p>
+            </div>
+        </div>
+
+        <!-- Hourly Chart Simulation -->
+        <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+            <h3 class="font-bold mb-4">توزيع المبيعات حسب الساعة</h3>
+            <div class="flex items-end gap-1 h-48">
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-gray-200 rounded-t" style="height: 10%"></div>
+                    <span class="text-[10px] text-textSub">8</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-gray-300 rounded-t" style="height: 20%"></div>
+                    <span class="text-[10px] text-textSub">9</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-blue-300 rounded-t" style="height: 35%"></div>
+                    <span class="text-[10px] text-textSub">10</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-blue-400 rounded-t" style="height: 50%"></div>
+                    <span class="text-[10px] text-textSub">11</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-blue-500 rounded-t" style="height: 65%"></div>
+                    <span class="text-[10px] text-textSub">12</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-yellow-400 rounded-t" style="height: 75%"></div>
+                    <span class="text-[10px] text-textSub">1</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-yellow-300 rounded-t" style="height: 55%"></div>
+                    <span class="text-[10px] text-textSub">2</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-gray-300 rounded-t" style="height: 30%"></div>
+                    <span class="text-[10px] text-textSub">3</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-gray-200 rounded-t" style="height: 25%"></div>
+                    <span class="text-[10px] text-textSub">4</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-blue-400 rounded-t" style="height: 60%"></div>
+                    <span class="text-[10px] text-textSub">5</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-red-500 rounded-t" style="height: 100%"></div>
+                    <span class="text-[10px] text-error font-bold">6</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-red-400 rounded-t" style="height: 90%"></div>
+                    <span class="text-[10px] text-textSub">7</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-blue-400 rounded-t" style="height: 70%"></div>
+                    <span class="text-[10px] text-textSub">8</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-blue-300 rounded-t" style="height: 45%"></div>
+                    <span class="text-[10px] text-textSub">9</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1">
+                    <div class="w-full bg-gray-300 rounded-t" style="height: 20%"></div>
+                    <span class="text-[10px] text-textSub">10</span>
+                </div>
+            </div>
+            <div class="flex justify-between text-xs text-textSub mt-2">
+                <span>صباحاً</span>
+                <span>ظهراً</span>
+                <span>مساءً</span>
+            </div>
+        </div>
+
+        <!-- Day of Week -->
+        <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+            <h3 class="font-bold mb-4">أيام الأسبوع الأكثر نشاطاً</h3>
+            <div class="space-y-2">
+                <div class="flex items-center gap-3"><span class="w-16 text-sm">الجمعة</span>
+                    <div class="flex-1 bg-gray-100 rounded-full h-6">
+                        <div class="bg-primary h-6 rounded-full" style="width: 95%"></div>
+                    </div><span class="font-roboto text-sm">95%</span>
+                </div>
+                <div class="flex items-center gap-3"><span class="w-16 text-sm">السبت</span>
+                    <div class="flex-1 bg-gray-100 rounded-full h-6">
+                        <div class="bg-primary h-6 rounded-full" style="width: 85%"></div>
+                    </div><span class="font-roboto text-sm">85%</span>
+                </div>
+                <div class="flex items-center gap-3"><span class="w-16 text-sm">الخميس</span>
+                    <div class="flex-1 bg-gray-100 rounded-full h-6">
+                        <div class="bg-secondary h-6 rounded-full" style="width: 70%"></div>
+                    </div><span class="font-roboto text-sm">70%</span>
+                </div>
+                <div class="flex items-center gap-3"><span class="w-16 text-sm">الأحد</span>
+                    <div class="flex-1 bg-gray-100 rounded-full h-6">
+                        <div class="bg-gray-300 h-6 rounded-full" style="width: 45%"></div>
+                    </div><span class="font-roboto text-sm">45%</span>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

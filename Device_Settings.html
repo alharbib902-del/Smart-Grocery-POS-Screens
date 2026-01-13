@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Device Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo min-h-screen">
+    <header class="bg-surface border-b border-border px-6 py-4">
+        <h1 class="text-xl font-bold">⚡ ربط الأجهزة</h1>
+    </header>
+
+    <main class="max-w-3xl mx-auto p-6 space-y-6">
+        <!-- Scale -->
+        <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-3xl">⚖️</div>
+                    <div>
+                        <h3 class="font-bold text-lg">الميزان الإلكتروني</h3>
+                        <p class="text-sm text-textSub">لوزن المنتجات السائبة</p>
+                    </div>
+                </div>
+                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">متصل ✓</span>
+            </div>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+                <div><label class="block text-textSub mb-1">نوع الميزان</label><select
+                        class="w-full h-10 px-3 rounded-lg border border-border">
+                        <option>CAS SW-20</option>
+                        <option>Digi SM-300</option>
+                    </select></div>
+                <div><label class="block text-textSub mb-1">منفذ الاتصال</label><select
+                        class="w-full h-10 px-3 rounded-lg border border-border">
+                        <option>COM3</option>
+                        <option>USB</option>
+                    </select></div>
+            </div>
+            <button class="mt-4 px-4 py-2 border border-secondary text-secondary rounded-lg text-sm font-bold">اختبار
+                الاتصال</button>
+        </div>
+
+        <!-- Cash Drawer -->
+        <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 bg-yellow-50 rounded-xl flex items-center justify-center text-3xl">🗃️</div>
+                    <div>
+                        <h3 class="font-bold text-lg">درج النقود</h3>
+                        <p class="text-sm text-textSub">فتح تلقائي بعد البيع</p>
+                    </div>
+                </div>
+                <span class="bg-gray-200 text-gray-600 px-3 py-1 rounded-full text-xs font-bold">غير متصل</span>
+            </div>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+                <div><label class="block text-textSub mb-1">طريقة الفتح</label><select
+                        class="w-full h-10 px-3 rounded-lg border border-border">
+                        <option>عبر الطابعة</option>
+                        <option>USB مباشر</option>
+                    </select></div>
+                <div class="flex items-end"><label class="flex items-center gap-2"><input type="checkbox" checked
+                            class="w-4 h-4"> فتح تلقائي عند البيع النقدي</label></div>
+            </div>
+            <button class="mt-4 px-4 py-2 bg-warning text-white rounded-lg text-sm font-bold">فتح الدرج
+                للاختبار</button>
+        </div>
+
+        <!-- Barcode Scanner -->
+        <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-3xl">📷</div>
+                    <div>
+                        <h3 class="font-bold text-lg">قارئ الباركود</h3>
+                        <p class="text-sm text-textSub">مسح سريع للمنتجات</p>
+                    </div>
+                </div>
+                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">متصل ✓</span>
+            </div>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+                <div><label class="block text-textSub mb-1">النوع</label><select
+                        class="w-full h-10 px-3 rounded-lg border border-border">
+                        <option>USB HID</option>
+                        <option>Bluetooth</option>
+                    </select></div>
+                <div><label class="block text-textSub mb-1">البادئة/اللاحقة</label><input type="text"
+                        placeholder="Enter" class="w-full h-10 px-3 rounded-lg border border-border"></div>
+            </div>
+            <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+                <p class="text-xs text-textSub mb-2">اختبار المسح:</p>
+                <input type="text" placeholder="امسح باركود هنا للاختبار..."
+                    class="w-full h-10 px-3 rounded-lg border border-border font-roboto">
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

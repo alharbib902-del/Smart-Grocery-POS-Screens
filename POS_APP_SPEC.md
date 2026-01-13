@@ -64,6 +64,7 @@
 | الشاشة | المسار | الأولوية |
 |--------|--------|----------|
 | قائمة الموردين | `/suppliers` | P1 |
+| تفاصيل/تعديل مورد | `/suppliers/:id` | P1 |
 | إضافة مورد | `/suppliers/add` | P1 |
 | فاتورة مشتريات جديدة | `/purchases/add` | P1 |
 | استيراد فاتورة (AI) | `/purchases/import` | P2 |
@@ -97,11 +98,14 @@
 |--------|--------|----------|
 | تقرير الضريبة (VAT) | `/reports/vat` | P0 |
 | قائمة المناديب | `/drivers` | P1 |
-| تفاصيل/إضافة مندوب | `/drivers/:id` | P1 |
+| تفاصيل مندوب | `/drivers/:id` | P1 |
+| إضافة مندوب | `/drivers/add` | P1 |
 | الطلب الذكي من المورد | `/purchases/smart-order` | P1 |
 | إعدادات WhatsApp | `/settings/whatsapp` | P2 |
-| العروض الذكية | `/promotions` | P2 |
+| قائمة العروض | `/promotions` | P2 |
+| إضافة عرض | `/promotions/add` | P2 |
 | نقاط الولاء | `/loyalty` | P3 |
+| تفاصيل نقاط عميل | `/loyalty/:accountId` | P3 |
 | إعدادات ZATCA | `/settings/zatca` | P0 |
 
 ## Phase 7B: الإعدادات والعمليات ★ جديد
@@ -110,6 +114,7 @@
 | الإعدادات العامة | `/settings/general` | P0 |
 | بيانات المتجر | `/settings/store` | P0 |
 | أجهزة الدفع | `/settings/payment-devices` | P1 |
+| إضافة جهاز دفع | `/settings/payment-devices/add` | P1 |
 | تعليق الفاتورة | `/pos/hold` | P1 |
 | المرتجعات | `/pos/returns` | P1 |
 | الوردية والصندوق | `/cash-drawer` | P1 |
@@ -119,10 +124,31 @@
 | الشاشة | المسار | الأولوية |
 |--------|--------|----------|
 | إدارة المستخدمين | `/settings/users` | P2 |
+| إضافة/تعديل مستخدم | `/settings/users/:id` | P2 |
 | النسخ الاحتياطي | `/settings/backup` | P3 |
-| المصروفات | `/expenses` | P2 |
+| قائمة المصروفات | `/expenses` | P2 |
+| إضافة مصروف | `/expenses/add` | P2 |
 | جرد المخزون | `/inventory/count` | P2 |
 | تقرير أداء الكاشير | `/reports/cashier` | P3 |
+
+## Phase 9: ميزات احترافية ★ جديد
+| الشاشة | المسار | الأولوية |
+|--------|--------|----------|
+| تصميم الإيصال | `/settings/receipt` | P1 |
+| سجل تغييرات الأسعار | `/products/price-history` | P2 |
+| تنبيهات النظام | `/notifications` | P1 |
+| تبديل الكاشير | `/pos/switch-user` | P1 |
+| تقرير الأصناف الأكثر مبيعاً | `/reports/top-products` | P1 |
+| تقرير ساعات الذروة | `/reports/peak-hours` | P2 |
+| تقرير هامش الربح | `/reports/profit-margin` | P1 |
+| مقارنة الفترات | `/reports/comparison` | P2 |
+| سجل النشاطات | `/settings/audit-log` | P1 |
+| إدارة الأدوار | `/settings/roles` | P2 |
+| ربط الميزان الإلكتروني | `/settings/scale` | P2 |
+| ربط درج النقود | `/settings/cash-drawer-device` | P2 |
+| إعدادات الباركود | `/settings/barcode` | P2 |
+| اختصارات لوحة المفاتيح | `/settings/shortcuts` | P3 |
+| المنتجات المفضلة | `/pos/favorites` | P1 |
 
 ---
 

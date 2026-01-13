@@ -1909,6 +1909,398 @@ Soft delete (isActive=false)
 
 ---
 
+# 🧾 31. Receipt Design ★ Phase 9
+
+## GET `/settings/receipt`
+إعدادات تصميم الإيصال
+
+**Response 200:**
+```json
+{
+  "showLogo": true,
+  "logoUrl": "https://...",
+  "headerText": "بقالة السعادة",
+  "footerText": "شكراً لزيارتكم",
+  "showQrCode": true,
+  "showTaxDetails": true,
+  "paperWidth": 80
+}
+```
+
+## PATCH `/settings/receipt`
+تحديث تصميم الإيصال
+
+---
+
+# 📈 32. Price History ★ Phase 9
+
+## GET `/products/:id/price-history`
+سجل تغييرات الأسعار
+
+**Response 200:**
+```json
+{
+  "history": [
+    {
+      "id": "uuid",
+      "oldPrice": 10.00,
+      "newPrice": 12.00,
+      "changedBy": "أحمد محمد",
+      "changedAt": "2026-01-13T10:00:00Z",
+      "reason": "تحديث سنوي"
+    }
+  ]
+}
+```
+
+---
+
+# 🔔 33. Notifications ★ Phase 9
+
+## GET `/notifications`
+قائمة التنبيهات
+
+**Query Params:**
+| Param | Type | Description |
+|-------|------|-------------|
+| type | string | `LOW_STOCK`, `EXPIRY`, `ORDER`, `SYSTEM` |
+| read | boolean | مقروءة/غير مقروءة |
+
+**Response 200:**
+```json
+{
+  "notifications": [
+    {
+      "id": "uuid",
+      "type": "LOW_STOCK",
+      "title": "مخزون منخفض",
+      "message": "حليب طازج - 5 وحدات متبقية",
+      "isRead": false,
+      "createdAt": "2026-01-13T10:00:00Z"
+    }
+  ],
+  "unreadCount": 12
+}
+```
+
+## PATCH `/notifications/:id/read`
+تحديد كمقروء
+
+## POST `/notifications/read-all`
+تحديد الكل كمقروء
+
+---
+
+# 🔄 34. Switch User ★ Phase 9
+
+## POST `/pos/switch-user`
+تبديل الكاشير
+
+**Request:**
+```json
+{
+  "pin": "1234"
+}
+```
+
+**Response 200:**
+```json
+{
+  "userId": "uuid",
+  "name": "سارة علي",
+  "role": "CASHIER",
+  "token": "jwt-token"
+}
+```
+
+---
+
+# 🏆 35. Top Products Report ★ Phase 9
+
+## GET `/reports/top-products`
+تقرير الأصناف الأكثر مبيعاً
+
+**Query Params:**
+| Param | Type | Description |
+|-------|------|-------------|
+| from | date | من تاريخ |
+| to | date | إلى تاريخ |
+| limit | int | 10, 50, 100 |
+| sortBy | string | `quantity`, `revenue` |
+
+**Response 200:**
+```json
+{
+  "products": [
+    {
+      "rank": 1,
+      "productId": "uuid",
+      "productName": "حليب طازج",
+      "quantitySold": 500,
+      "revenue": 7500.00
+    }
+  ]
+}
+```
+
+---
+
+# ⏰ 36. Peak Hours Report ★ Phase 9
+
+## GET `/reports/peak-hours`
+تقرير ساعات الذروة
+
+**Response 200:**
+```json
+{
+  "heatmap": [
+    {"day": "السبت", "hour": 10, "salesCount": 45},
+    {"day": "السبت", "hour": 11, "salesCount": 62},
+    {"day": "السبت", "hour": 20, "salesCount": 78}
+  ],
+  "peakHours": ["20:00", "21:00", "10:00"]
+}
+```
+
+---
+
+# 💹 37. Profit Margin Report ★ Phase 9
+
+## GET `/reports/profit-margin`
+تقرير هامش الربح
+
+**Response 200:**
+```json
+{
+  "products": [
+    {
+      "productId": "uuid",
+      "productName": "حليب طازج",
+      "costPrice": 10.00,
+      "salePrice": 15.00,
+      "margin": 5.00,
+      "marginPercent": 33.33,
+      "quantitySold": 100,
+      "totalProfit": 500.00
+    }
+  ],
+  "summary": {
+    "totalCost": 10000.00,
+    "totalRevenue": 15000.00,
+    "totalProfit": 5000.00,
+    "avgMarginPercent": 33.33
+  }
+}
+```
+
+---
+
+# 📊 38. Period Comparison ★ Phase 9
+
+## GET `/reports/comparison`
+مقارنة الفترات
+
+**Query Params:**
+| Param | Type | Description |
+|-------|------|-------------|
+| period1From | date | بداية الفترة الأولى |
+| period1To | date | نهاية الفترة الأولى |
+| period2From | date | بداية الفترة الثانية |
+| period2To | date | نهاية الفترة الثانية |
+
+**Response 200:**
+```json
+{
+  "period1": {
+    "sales": 50000.00,
+    "transactions": 500,
+    "avgTicket": 100.00
+  },
+  "period2": {
+    "sales": 45000.00,
+    "transactions": 450,
+    "avgTicket": 100.00
+  },
+  "change": {
+    "salesPercent": 11.11,
+    "transactionsPercent": 11.11
+  }
+}
+```
+
+---
+
+# 📋 39. Audit Log ★ Phase 9
+
+## GET `/settings/audit-log`
+سجل النشاطات
+
+**Query Params:**
+| Param | Type | Description |
+|-------|------|-------------|
+| action | string | `VOID_SALE`, `PRICE_CHANGE`, `DELETE`, `LOGIN` |
+| userId | string | فلتر بالمستخدم |
+| from | date | من تاريخ |
+| to | date | إلى تاريخ |
+
+**Response 200:**
+```json
+{
+  "logs": [
+    {
+      "id": "uuid",
+      "action": "PRICE_CHANGE",
+      "userId": "uuid",
+      "userName": "أحمد محمد",
+      "details": {
+        "productId": "uuid",
+        "oldValue": 10.00,
+        "newValue": 12.00
+      },
+      "ipAddress": "192.168.1.1",
+      "timestamp": "2026-01-13T10:00:00Z"
+    }
+  ]
+}
+```
+
+---
+
+# 👔 40. Roles Management ★ Phase 9
+
+## GET `/settings/roles`
+قائمة الأدوار
+
+**Response 200:**
+```json
+{
+  "roles": [
+    {
+      "id": "MANAGER",
+      "name": "مدير",
+      "permissions": ["VOID_SALE", "ADJUST_INVENTORY", "VIEW_REPORTS", "CLOSE_MONTH"]
+    },
+    {
+      "id": "CASHIER",
+      "name": "كاشير",
+      "permissions": ["VOID_SALE"]
+    }
+  ]
+}
+```
+
+## PUT `/settings/roles/:id`
+تعديل صلاحيات دور
+
+---
+
+# ⚖️ 41. Scale Settings ★ Phase 9
+
+## GET `/settings/scale`
+إعدادات الميزان الإلكتروني
+
+## PATCH `/settings/scale`
+تحديث إعدادات الميزان
+
+**Request:**
+```json
+{
+  "enabled": true,
+  "port": "COM3",
+  "baudRate": 9600,
+  "protocol": "TOLEDO"
+}
+```
+
+---
+
+# 🗃️ 42. Cash Drawer Device ★ Phase 9
+
+## GET `/settings/cash-drawer-device`
+إعدادات درج النقود
+
+## PATCH `/settings/cash-drawer-device`
+تحديث إعدادات درج النقود
+
+**Request:**
+```json
+{
+  "enabled": true,
+  "openOnCashPayment": true,
+  "printerPort": "COM1"
+}
+```
+
+---
+
+# 🏷️ 43. Barcode Settings ★ Phase 9
+
+## GET `/settings/barcode`
+إعدادات الباركود
+
+## PATCH `/settings/barcode`
+تحديث إعدادات الباركود
+
+## POST `/products/:id/print-barcode`
+طباعة باركود منتج
+
+**Request:**
+```json
+{
+  "copies": 10,
+  "includePrice": true
+}
+```
+
+---
+
+# ⌨️ 44. Keyboard Shortcuts ★ Phase 9
+
+## GET `/settings/shortcuts`
+اختصارات لوحة المفاتيح
+
+**Response 200:**
+```json
+{
+  "shortcuts": [
+    {"key": "F1", "action": "OPEN_SEARCH", "label": "بحث"},
+    {"key": "F2", "action": "NEW_SALE", "label": "بيع جديد"},
+    {"key": "F3", "action": "HOLD_INVOICE", "label": "تعليق"},
+    {"key": "F12", "action": "CHECKOUT", "label": "دفع"}
+  ]
+}
+```
+
+## PUT `/settings/shortcuts`
+تخصيص الاختصارات
+
+---
+
+# ⭐ 45. Favorites ★ Phase 9
+
+## GET `/pos/favorites`
+المنتجات المفضلة
+
+**Response 200:**
+```json
+{
+  "favorites": [
+    {"productId": "uuid", "productName": "حليب طازج", "price": 15.00, "order": 1}
+  ]
+}
+```
+
+## POST `/pos/favorites`
+إضافة منتج للمفضلة
+
+## DELETE `/pos/favorites/:productId`
+إزالة من المفضلة
+
+## PUT `/pos/favorites/reorder`
+إعادة ترتيب المفضلة
+
+---
+
 # ⚠️ Error Codes
 
 ## Error Format

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Add User</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', purpleAI: '#7C3AED',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo min-h-screen">
+    <header class="bg-surface border-b border-border px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <a href="User_Management.html" class="text-textSub hover:text-textMain">→</a>
+            <h1 class="text-xl font-bold">إضافة مستخدم جديد</h1>
+        </div>
+        <button class="px-6 py-2 bg-purpleAI text-white rounded-lg font-bold">إنشاء المستخدم</button>
+    </header>
+
+    <main class="max-w-2xl mx-auto p-6 space-y-6">
+        <!-- Personal Info -->
+        <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+            <h2 class="font-bold text-lg mb-4">المعلومات الشخصية</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="col-span-2">
+                    <label class="block text-sm font-bold text-textSub mb-2">الاسم الكامل *</label>
+                    <input type="text" placeholder="اسم المستخدم"
+                        class="w-full h-12 px-4 rounded-lg border border-border">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-textSub mb-2">رقم الجوال *</label>
+                    <input type="tel" placeholder="05XXXXXXXX" dir="ltr"
+                        class="w-full h-12 px-4 rounded-lg border border-border font-roboto text-left">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-textSub mb-2">البريد الإلكتروني</label>
+                    <input type="email" placeholder="email@example.com" dir="ltr"
+                        class="w-full h-12 px-4 rounded-lg border border-border font-roboto text-left">
+                </div>
+            </div>
+        </div>
+
+        <!-- Role & Permissions -->
+        <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+            <h2 class="font-bold text-lg mb-4">الدور والصلاحيات</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-textSub mb-2">الدور *</label>
+                    <select class="w-full h-12 px-4 rounded-lg border border-border">
+                        <option>كاشير</option>
+                        <option>مدير مخزن</option>
+                        <option>محاسب</option>
+                        <option>مدير</option>
+                    </select>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <p class="font-bold text-sm mb-3">الصلاحيات:</p>
+                    <div class="grid grid-cols-2 gap-2 text-sm">
+                        <label class="flex items-center gap-2"><input type="checkbox" checked class="w-4 h-4"> البيع
+                            والفواتير</label>
+                        <label class="flex items-center gap-2"><input type="checkbox" checked class="w-4 h-4">
+                            المرتجعات</label>
+                        <label class="flex items-center gap-2"><input type="checkbox" class="w-4 h-4"> إدارة
+                            المنتجات</label>
+                        <label class="flex items-center gap-2"><input type="checkbox" class="w-4 h-4"> المشتريات</label>
+                        <label class="flex items-center gap-2"><input type="checkbox" class="w-4 h-4"> التقارير</label>
+                        <label class="flex items-center gap-2"><input type="checkbox" class="w-4 h-4"> الإعدادات</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security -->
+        <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+            <h2 class="font-bold text-lg mb-4">الأمان</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-bold text-textSub mb-2">كلمة المرور *</label>
+                    <input type="password" placeholder="••••••••"
+                        class="w-full h-12 px-4 rounded-lg border border-border">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-textSub mb-2">تأكيد كلمة المرور *</label>
+                    <input type="password" placeholder="••••••••"
+                        class="w-full h-12 px-4 rounded-lg border border-border">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-textSub mb-2">رمز PIN (للكاشير)</label>
+                    <input type="password" placeholder="4 أرقام" maxlength="4"
+                        class="w-full h-12 px-4 rounded-lg border border-border font-roboto">
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

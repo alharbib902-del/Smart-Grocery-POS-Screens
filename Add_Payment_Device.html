@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Add Payment Device</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo min-h-screen">
+    <header class="bg-surface border-b border-border px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <a href="Payment_Devices.html" class="text-textSub hover:text-textMain">→</a>
+            <h1 class="text-xl font-bold">إضافة جهاز دفع</h1>
+        </div>
+        <button class="px-6 py-2 bg-secondary text-white rounded-lg font-bold">حفظ الجهاز</button>
+    </header>
+
+    <main class="max-w-2xl mx-auto p-6 space-y-6">
+        <!-- Device Type -->
+        <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+            <h2 class="font-bold text-lg mb-4">نوع الجهاز</h2>
+            <div class="grid grid-cols-2 gap-3">
+                <button class="p-4 border-2 border-secondary bg-blue-50 rounded-xl text-center">
+                    <div class="text-3xl mb-2">💳</div>
+                    <p class="font-bold">جهاز مدى</p>
+                    <p class="text-xs text-textSub">بطاقات الدفع</p>
+                </button>
+                <button class="p-4 border border-border rounded-xl text-center hover:bg-gray-50">
+                    <div class="text-3xl mb-2">📱</div>
+                    <p class="font-bold">NFC / تلامسي</p>
+                    <p class="text-xs text-textSub">Apple Pay / Google Pay</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- Device Info -->
+        <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+            <h2 class="font-bold text-lg mb-4">معلومات الجهاز</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-textSub mb-2">اسم الجهاز *</label>
+                    <input type="text" placeholder="مثال: جهاز مدى - الكاشير 1"
+                        class="w-full h-12 px-4 rounded-lg border border-border">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold text-textSub mb-2">Terminal ID *</label>
+                        <input type="text" placeholder="رقم الجهاز" dir="ltr"
+                            class="w-full h-12 px-4 rounded-lg border border-border font-roboto text-left">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-textSub mb-2">Merchant ID</label>
+                        <input type="text" placeholder="رقم التاجر" dir="ltr"
+                            class="w-full h-12 px-4 rounded-lg border border-border font-roboto text-left">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-textSub mb-2">الموديل</label>
+                    <select class="w-full h-12 px-4 rounded-lg border border-border">
+                        <option>Ingenico DX8000</option>
+                        <option>Verifone VX520</option>
+                        <option>PAX A920</option>
+                        <option>أخرى</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Connection -->
+        <div class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+            <h2 class="font-bold text-lg mb-4">طريقة الاتصال</h2>
+            <div class="grid grid-cols-3 gap-3">
+                <label class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg cursor-pointer">
+                    <input type="radio" name="connection" checked class="w-4 h-4 text-secondary">
+                    <span class="font-bold text-sm">USB</span>
+                </label>
+                <label class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg cursor-pointer">
+                    <input type="radio" name="connection" class="w-4 h-4 text-secondary">
+                    <span class="font-bold text-sm">Bluetooth</span>
+                </label>
+                <label class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg cursor-pointer">
+                    <input type="radio" name="connection" class="w-4 h-4 text-secondary">
+                    <span class="font-bold text-sm">WiFi</span>
+                </label>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

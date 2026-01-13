@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grocery - Hold Invoice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50', secondary: '#2196F3', surface: '#FFFFFF',
+                        background: '#F3F4F6', error: '#EF4444', warning: '#FF9800',
+                        textMain: '#1F2937', textSub: '#6B7280', border: '#E5E7EB'
+                    },
+                    fontFamily: { cairo: ['Cairo'], roboto: ['Roboto'] }
+                }
+            }
+        }
+    </script>
+    <script src="navigation.js" defer></script>
+</head>
+
+<body class="bg-background text-textMain font-cairo min-h-screen">
+    <header class="bg-warning text-white px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <a href="pos.html" class="text-white/80 hover:text-white">→</a>
+            <h1 class="text-xl font-bold">الفواتير المعلقة</h1>
+        </div>
+        <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-bold">3 فواتير</span>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6 space-y-4">
+        <!-- Held Invoice 1 -->
+        <div class="bg-surface rounded-xl border border-border p-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-12 h-12 bg-warning/10 text-warning rounded-lg flex items-center justify-center text-xl font-bold">
+                        1</div>
+                    <div>
+                        <h3 class="font-bold">أحمد محمد</h3>
+                        <p class="text-xs text-textSub font-roboto">معلقة منذ 15 دقيقة</p>
+                    </div>
+                </div>
+                <div class="text-left">
+                    <p class="text-xl font-bold font-roboto">85.50 SAR</p>
+                    <p class="text-xs text-textSub">4 منتجات</p>
+                </div>
+            </div>
+            <div class="flex gap-2 text-sm">
+                <span class="bg-gray-100 px-2 py-1 rounded">🥛 حليب x2</span>
+                <span class="bg-gray-100 px-2 py-1 rounded">🍞 خبز x1</span>
+                <span class="bg-gray-100 px-2 py-1 rounded">+1</span>
+            </div>
+            <div class="flex gap-2 mt-4">
+                <button class="flex-1 h-10 bg-primary text-white rounded-lg font-bold">استئناف ←</button>
+                <button
+                    class="h-10 px-4 border border-error text-error rounded-lg font-bold hover:bg-red-50">إلغاء</button>
+            </div>
+        </div>
+
+        <!-- Held Invoice 2 -->
+        <div class="bg-surface rounded-xl border border-border p-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-12 h-12 bg-warning/10 text-warning rounded-lg flex items-center justify-center text-xl font-bold">
+                        2</div>
+                    <div>
+                        <h3 class="font-bold">عميل عام</h3>
+                        <p class="text-xs text-textSub font-roboto">معلقة منذ 30 دقيقة</p>
+                    </div>
+                </div>
+                <div class="text-left">
+                    <p class="text-xl font-bold font-roboto">245.00 SAR</p>
+                    <p class="text-xs text-textSub">8 منتجات</p>
+                </div>
+            </div>
+            <div class="flex gap-2 text-sm">
+                <span class="bg-gray-100 px-2 py-1 rounded">🧀 جبنة x3</span>
+                <span class="bg-gray-100 px-2 py-1 rounded">🥤 عصير x2</span>
+                <span class="bg-gray-100 px-2 py-1 rounded">+3</span>
+            </div>
+            <div class="flex gap-2 mt-4">
+                <button class="flex-1 h-10 bg-primary text-white rounded-lg font-bold">استئناف ←</button>
+                <button
+                    class="h-10 px-4 border border-error text-error rounded-lg font-bold hover:bg-red-50">إلغاء</button>
+            </div>
+        </div>
+
+        <!-- Held Invoice 3 -->
+        <div class="bg-surface rounded-xl border border-border p-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-12 h-12 bg-warning/10 text-warning rounded-lg flex items-center justify-center text-xl font-bold">
+                        3</div>
+                    <div>
+                        <h3 class="font-bold">محمد علي</h3>
+                        <p class="text-xs text-textSub font-roboto">معلقة منذ ساعة</p>
+                    </div>
+                </div>
+                <div class="text-left">
+                    <p class="text-xl font-bold font-roboto">52.75 SAR</p>
+                    <p class="text-xs text-textSub">2 منتجات</p>
+                </div>
+            </div>
+            <div class="flex gap-2 text-sm">
+                <span class="bg-gray-100 px-2 py-1 rounded">🍎 فواكه x1</span>
+                <span class="bg-gray-100 px-2 py-1 rounded">🥚 بيض x1</span>
+            </div>
+            <div class="flex gap-2 mt-4">
+                <button class="flex-1 h-10 bg-primary text-white rounded-lg font-bold">استئناف ←</button>
+                <button
+                    class="h-10 px-4 border border-error text-error rounded-lg font-bold hover:bg-red-50">إلغاء</button>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
