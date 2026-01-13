@@ -2301,6 +2301,121 @@ Soft delete (isActive=false)
 
 ---
 
+# 📱 46. Digital Receipt ★ Phase 10
+
+## GET `/settings/digital-receipt`
+إعدادات الفاتورة الرقمية
+
+**Response 200:**
+```json
+{
+  "enabled": true,
+  "sendViaWhatsApp": true,
+  "includeAppDownloadLink": true,
+  "storeCode": "STORE123",
+  "appDownloadUrl": "https://alhai.app/s/STORE123",
+  "messageTemplate": "🧾 فاتورتك من {storeName}\n\nالمجموع: {total} ر.س\n📄 {receiptUrl}\n\n📲 حمّل تطبيقنا:\n{appUrl}",
+  "welcomePoints": 50,
+  "firstOrderDiscount": 5
+}
+```
+
+## PATCH `/settings/digital-receipt`
+تحديث إعدادات الفاتورة الرقمية
+
+## POST `/receipts/:id/send-whatsapp`
+إرسال الفاتورة عبر واتساب
+
+**Request:**
+```json
+{
+  "phone": "+966500000001",
+  "includeAppLink": true
+}
+```
+
+**Response 200:**
+```json
+{
+  "status": "SENT",
+  "messageId": "uuid",
+  "receiptUrl": "https://alhai.app/r/ABC123"
+}
+```
+
+---
+
+# 📊 47. App Downloads Report ★ Phase 10
+
+## GET `/reports/app-downloads`
+تقرير تحميلات التطبيق
+
+**Query Params:**
+| Param | Type | Description |
+|-------|------|-------------|
+| from | date | من تاريخ |
+| to | date | إلى تاريخ |
+| source | string | `POS`, `RECEIPT`, `REFERRAL`, `ORGANIC` |
+
+**Response 200:**
+```json
+{
+  "summary": {
+    "totalDownloads": 245,
+    "fromPos": 120,
+    "fromReceipt": 80,
+    "fromReferral": 35,
+    "organic": 10
+  },
+  "daily": [
+    {"date": "2026-01-13", "downloads": 15, "orders": 8},
+    {"date": "2026-01-12", "downloads": 12, "orders": 5}
+  ],
+  "conversionRate": 48.9
+}
+```
+
+---
+
+# 🔗 48. Referral Program ★ Phase 10
+
+## GET `/settings/referral`
+إعدادات برنامج الإحالة
+
+**Response 200:**
+```json
+{
+  "enabled": true,
+  "storeCode": "STORE123",
+  "storeQrCodeUrl": "https://alhai.app/qr/STORE123",
+  "referrerPoints": 100,
+  "refereePoints": 50,
+  "refereeDiscount": 5,
+  "referralUrl": "https://alhai.app/ref/{customerId}"
+}
+```
+
+## PATCH `/settings/referral`
+تحديث إعدادات الإحالة
+
+## GET `/reports/referrals`
+تقرير الإحالات
+
+**Response 200:**
+```json
+{
+  "totalReferrals": 45,
+  "successfulInstalls": 38,
+  "ordersFromReferrals": 25,
+  "revenueFromReferrals": 3500.00,
+  "topReferrers": [
+    {"customerId": "uuid", "name": "محمد أحمد", "referrals": 12, "revenue": 1200.00}
+  ]
+}
+```
+
+---
+
 # ⚠️ Error Codes
 
 ## Error Format
